@@ -18,6 +18,7 @@
 // Categories
 #import "NSArray+BirdKit.h"
 #import "NSLayoutConstraint+BirdKit.h"
+#import "NSDictionary+BirdKit.h"
 #import "UIView+BirdKit.h"
 #import "UIButton+BirdKit.h"
 #import "UIColor+BirdKit.h"

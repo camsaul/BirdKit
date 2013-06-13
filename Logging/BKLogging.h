@@ -20,6 +20,7 @@ typedef enum : NSUInteger {
 	LogCategoryLocation				= (1 << 5), //  32 = 0010 0000
 	LogCategoryRootVCAndView		= (1 << 6), //  64 = 0100 0000
 	LogCategoryRouteFinder			= (1 << 7), // 128 = 1000 0000
+	LogCategoryAppHandler			= (1 << 8), // 256
 } LogCategory;
 
 void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...);
