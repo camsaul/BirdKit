@@ -10,6 +10,8 @@
 #define PROP_RO @property (nonatomic, readonly)
 #define PROP_STRONG @property (nonatomic, strong)
 #define PROP_STRONG_RO @property (nonatomic, strong, readonly)
+#define PROP_COPY @property (nonatomic, copy)
+#define PROP_COPY_RO @property (nonatomic, copy, readonly)
 #define PROP_WEAK @property (nonatomic, weak)
 #define PROP_WEAK_RO @property (nonatomic, weak, readonly)
 #define PROP_DELEGATE(PROTOCOL) PROP_WEAK id<PROTOCOL> delegate
