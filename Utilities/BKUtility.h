@@ -18,6 +18,7 @@ BOOL is_portrait();
 BOOL is_ipad_landscape();
 BOOL is_ipad_portrait();
 BOOL is_retina();
+BOOL is_ios7();
 
 CGSize current_screen_size();
 

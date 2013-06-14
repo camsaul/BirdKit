@@ -71,7 +71,7 @@
 	if (self.hiddenButton) return;
 	
 	UIButton *hiddenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	//	hiddenButton.backgroundColor = [UIColor rydeTransparentBlackOverlayColor];
+//	hiddenButton.backgroundColor = [[UIColor magentaColor] colorWithAlphaComponent:0.2];
 	hiddenButton.tag = HiddenButtonTag;
 	hiddenButton.translatesAutoresizingMaskIntoConstraints = NO;
 	[self addSubview:hiddenButton];

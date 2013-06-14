@@ -65,6 +65,11 @@ BOOL is_retina() {
 	return [UIScreen mainScreen].scale > 1;
 }
 
+BOOL is_ios7() {
+	NSString *versionStr = [[UIDevice currentDevice] systemVersion];
+	return [versionStr floatValue] >= 7.0;
+}
+
 CGSize current_screen_size() {
 	return [UIApplication sharedApplication].delegate.window.rootViewController.view.bounds.size;
 }

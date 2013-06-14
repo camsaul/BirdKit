@@ -12,4 +12,8 @@
 
 - (NSDictionary *)dictionaryByMergingWithDictionary:(NSDictionary *)dictionary;
 
+- (NSDictionary *)dictionaryBySubtractingDictionary:(NSDictionary *)dictionary;
+
+- (NSUInteger)deepCount;
+
 @end
