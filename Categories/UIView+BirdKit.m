@@ -105,4 +105,35 @@
 - (void)keyboardDidHide {}
 
 
+#pragma mark - 3D Animation
+
++ (void)apply3DTransform:(CATransform3D)transform toView:(UIView *)view duration:(CGFloat)duration completion:(Transform3DCompletionBlock)completion {
+	CALayer *layer = view.layer;
+	
+	if (duration > 0) {
+		[CATransaction begin];
+		[CATransaction setDisableActions:YES];
+		
+		CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+		animation.duration = duration;
+		animation.fromValue = [NSValue valueWithCATransform3D:layer.transform];
+		animation.toValue = [NSValue valueWithCATransform3D:transform];
+		animation.fillMode = kCAFillModeBoth;
+		[layer addAnimation:animation forKey:@"transfom"];
+		
+		layer.transform = transform;
+		
+		[CATransaction commit];
+		
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC));
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			if (completion) completion();
+		});
+	} else {
+		layer.transform = transform;
+		if (completion) completion();
+	}
+}
+
+
 @end

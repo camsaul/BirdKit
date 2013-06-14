@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 static const int HiddenButtonTag = 987654;
+
+typedef void(^Transform3DCompletionBlock)();
 
 @interface UIView (BirdKit)
 
@@ -35,5 +38,11 @@ static const int HiddenButtonTag = 987654;
 - (void)hideKeyboard; // calls resignFirstResponder on all subviews
 - (void)keyboardDidHide; // called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
 
+#pragma mark - 3D Animations
+
+/**
+ * Duration of 0 is considered to mean "animated = NO"
+ */
++ (void)apply3DTransform:(CATransform3D)transform toView:(UIView *)view duration:(CGFloat)duration completion:(Transform3DCompletionBlock)completion;
 
 @end
