@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+@import Foundation;
+@import CoreLocation;
 
 @interface BKGeocoder : NSObject
 

@@ -31,6 +31,8 @@
 		7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */; };
 		7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */; };
 		7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */; };
+		7ED08D6C176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
+		7ED08D6D176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
 		7EF44EF8176AF1C7007EFAC6 /* UIView+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E15367D1769D45300114543 /* UIView+BirdKit.m */; };
 		7EF44EF9176AF1C7007EFAC6 /* NSLayoutConstraint+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536861769D4B500114543 /* NSLayoutConstraint+BirdKit.m */; };
 		7EF44EFA176AF1C7007EFAC6 /* UIButton+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E15369E1769DE4900114543 /* UIButton+BirdKit.m */; };
@@ -110,6 +112,8 @@
 		7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BirdKit.m"; sourceTree = "<group>"; };
 		7E888A7A176BFA63006B4E83 /* NSObject+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BirdKit.h"; sourceTree = "<group>"; };
 		7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BirdKit.m"; sourceTree = "<group>"; };
+		7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+BirdKit.h"; sourceTree = "<group>"; };
+		7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+BirdKit.m"; sourceTree = "<group>"; };
 		7EF44EF7176AF19C007EFAC6 /* BirdKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BirdKit-Prefix.pch"; path = "../BirdKit/BirdKit-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +226,8 @@
 				7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */,
 				7E888A7A176BFA63006B4E83 /* NSObject+BirdKit.h */,
 				7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */,
+				7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */,
+				7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */,
 			);
 			name = "General Categories";
 			path = Categories;
@@ -341,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED08D6C176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */,
 				7E1536A21769E1B600114543 /* NSArray+BirdKit.m in Sources */,
 				7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */,
 				7E1536B41769E75000114543 /* BKUtility.m in Sources */,
@@ -361,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED08D6D176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */,
 				7EF44F02176AF1DD007EFAC6 /* BKGeocoder.m in Sources */,
 				7EF44F00176AF1D1007EFAC6 /* ParamsViewController.m in Sources */,
 				7EF44EF8176AF1C7007EFAC6 /* UIView+BirdKit.m in Sources */,

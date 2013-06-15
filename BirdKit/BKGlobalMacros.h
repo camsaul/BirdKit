@@ -18,4 +18,9 @@
 
 #define NEW(CLASS, VAR_NAME) CLASS *VAR_NAME = [[CLASS alloc] init]
 
-#define TODO_ALERT(MESSAGE...) [[[UIAlertView alloc] initWithTitle:@"TODO" message:[NSString stringWithFormat:MESSAGE] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show]
+#define TODO_ALERT(MESSAGE...) { \
+	NSString *message = [NSString stringWithFormat:MESSAGE]; \
+	[[[UIAlertView alloc] initWithTitle:@"TODO" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show]; \
+	BKLog(LogFlagWarn, LogCategoryTODO, message); \
+}
+

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 typedef enum : NSUInteger {
 	LogFlagError	= (1 << 0), // 1 = 0001
@@ -21,9 +21,11 @@ typedef enum : NSUInteger {
 	LogCategoryRootVCAndView		= (1 << 6), //  64 = 0100 0000
 	LogCategoryRouteFinder			= (1 << 7), // 128 = 1000 0000
 	LogCategoryAppHandler			= (1 << 8), // 256
+	LogCategoryTODO					= (1 << 9), // 512
 } LogCategory;
 
 void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...);
+void BKLogTODO(NSString *formatString, ...);
 
 
 // ---------- DEFAULT LOGGING LEVEL ----------

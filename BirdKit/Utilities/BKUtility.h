@@ -6,9 +6,8 @@
 //  Copyright (c) 2013 FiveBy. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+@import UIKit;
+@import CoreLocation;
 
 BOOL is_ipad();
 BOOL is_iphone();
@@ -30,5 +29,9 @@ BOOL longitude_is_valid(double lon);
 float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
 float latitude_span_to_meters(float latitudeSpan);
 float meters_to_miles(float meters);
-//int miles_to_minutes_walk(float miles);
 int meters_to_minutes_walk(int meters);
+
+/**
+ * Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
+ */
+void TodoAlert(NSString *formatString, ...);

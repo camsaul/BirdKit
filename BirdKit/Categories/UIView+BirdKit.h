@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+@import UIKit;
 
 static const int HiddenButtonTag = 987654;
 

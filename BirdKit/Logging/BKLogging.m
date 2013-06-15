@@ -15,16 +15,24 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryRootVCAndView:		return "RootVC/RootView";
 		case LogCategoryRouteFinder:		return "Route Finder";
 		case LogCategoryAppHandler:			return "App Handler";
+		case LogCategoryTODO:				return "TODO";
 	}
 	assert(false); // Please add a string for log category
 }
 
 void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...) {
 	if (CurrentLogLevel & (flag|category)) {
-		va_list args;
-		va_start(args, formatString);
-		NSString *string = [[NSString alloc] initWithFormat:formatString arguments:args];
+		va_list argptr;
+		va_start(argptr, formatString);
+		NSString *string = [[NSString alloc] initWithFormat:formatString arguments:argptr];
 		printf("[%s] %s\n", string_for_log_category(category), [string cStringUsingEncoding:NSUTF8StringEncoding]);
-		va_end(args);
+		va_end(argptr);
 	}
+}
+
+void BKLogTODO(NSString *formatString, ...) {
+	va_list argptr;
+	va_start(argptr, formatString);
+	BKLog(LogFlagWarn, LogCategoryTODO, formatString, argptr);
+	va_end(argptr);
 }

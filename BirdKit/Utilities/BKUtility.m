@@ -134,13 +134,20 @@ float meters_to_miles(float meters) {
 	return meters * 0.000621371192;
 }
 
-//int miles_to_minutes_walk(float miles) {
-//    const int AverageHumanWalkingSpeed = 2.7; // mph
-//    float hours = miles / AverageHumanWalkingSpeed;
-//    return (int)roundf(hours * 60);
-//}
-
 inline int meters_to_minutes_walk(int meters) {
 	static const int AverageHumanWalkingSpeedMetersPerMinute = 2.7 * 1600.0 / 60.0; // 2.7mph * 1600 meters/mile ÷ minutes per hour
 	return meters / AverageHumanWalkingSpeedMetersPerMinute;
+}
+
+extern void BKLogTODO(NSString *,...);
+
+void TodoAlert(NSString *formatString, ...) {
+	va_list argptr;
+	va_start(argptr, formatString);
+	NSString *message = [[NSString alloc] initWithFormat:formatString arguments:argptr];
+	[[[UIAlertView alloc] initWithTitle:@"TODO" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+	
+	BKLogTODO(formatString, argptr);
+	
+	va_end(argptr);
 }

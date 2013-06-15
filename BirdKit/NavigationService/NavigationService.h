@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 @interface NavigationService : NSObject
 + (void)navigateTo:(NSString *)destinationClass params:(NSDictionary *)params;
