@@ -16,6 +16,7 @@
 #import "BKGlobalMacros.h"
 
 // Categories
+#import "NSObject+BirdKit.h"
 #import "NSArray+BirdKit.h"
 #import "NSLayoutConstraint+BirdKit.h"
 #import "NSDictionary+BirdKit.h"

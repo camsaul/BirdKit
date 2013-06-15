@@ -38,6 +38,8 @@ typedef void(^Transform3DCompletionBlock)();
 - (void)hideKeyboard; // calls resignFirstResponder on all subviews
 - (void)keyboardDidHide; // called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
 
+- (void)removeAllSubviews;
+
 #pragma mark - 3D Animations
 
 /**

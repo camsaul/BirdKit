@@ -104,6 +104,12 @@
 
 - (void)keyboardDidHide {}
 
+- (void)removeAllSubviews {
+	for (UIView *subview in [self.subviews copy]) {
+		[subview removeFromSuperview];
+	}
+}
+
 
 #pragma mark - 3D Animation
 
