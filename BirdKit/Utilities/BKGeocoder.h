@@ -9,8 +9,13 @@
 @import Foundation;
 @import CoreLocation;
 
+typedef void(^BKReverseGeocdoingCompletionBlock)(NSString *addressOrNil);
+
 @interface BKGeocoder : NSObject
 
-+ (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(void(^)(NSString *addressOrNil))completionBlock;
+/**
+ * According to apple, you can only have one reverse geocoding request at any given moment, so calling this will cancel any exisiting requests (completion block will return nil).
+ */
++ (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(BKReverseGeocdoingCompletionBlock)completionBlock;
 
 @end

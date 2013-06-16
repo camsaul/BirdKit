@@ -8,12 +8,26 @@
 
 #import "BKGeocoder.h"
 #import "BKLogging.h"
+#import "NSMutableArray+Queue.h"
+
+static CLGeocoder *__geocoder;
+static BOOL __activeRequest;
 
 @implementation BKGeocoder
 
-+ (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(void(^)(NSString *address))completionBlock {
-	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-	[geocoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude] completionHandler:^(NSArray *placemarks, NSError *error) {
++ (void)load {
+	__geocoder = [[CLGeocoder alloc] init];
+}
+
++ (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(BKReverseGeocdoingCompletionBlock)completionBlock {
+	if (__activeRequest) {
+		[__geocoder cancelGeocode];
+	}
+	
+	__activeRequest = YES;
+	[__geocoder reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude] completionHandler:^(NSArray *placemarks, NSError *error) {
+		__activeRequest = NO;
+		
 		if (error || !placemarks[0]) {
 			completionBlock(nil);
 			return;
