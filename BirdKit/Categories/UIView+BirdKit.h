@@ -10,6 +10,14 @@
 
 static const int HiddenButtonTag = 987654;
 
+/**
+ * Save ourselves a bit of typing by defining some really common resizing masks here
+ */
+static const UIViewAutoresizing UIViewAutoresizingFlexibleVerticalMargins	= UIViewAutoresizingFlexibleTopMargin		| UIViewAutoresizingFlexibleBottomMargin;
+static const UIViewAutoresizing UIViewAutoresizingFlexibleHorizontalMargins = UIViewAutoresizingFlexibleLeftMargin		| UIViewAutoresizingFlexibleRightMargin;
+static const UIViewAutoresizing UIViewAutoresizingFlexibleMargins			= UIViewAutoresizingFlexibleVerticalMargins	| UIViewAutoresizingFlexibleHorizontalMargins;
+static const UIViewAutoresizing UIViewAutoresizingFlexibleSize				= UIViewAutoresizingFlexibleHeight			| UIViewAutoresizingFlexibleWidth;
+
 typedef void(^Transform3DCompletionBlock)();
 
 @interface UIView (BirdKit)
@@ -38,6 +46,7 @@ typedef void(^Transform3DCompletionBlock)();
 - (void)keyboardDidHide; // called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
 
 - (void)removeAllSubviews;
+
 
 #pragma mark - 3D Animations
 
