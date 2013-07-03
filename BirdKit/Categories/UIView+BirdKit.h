@@ -22,8 +22,24 @@ typedef void(^Transform3DCompletionBlock)();
 
 @interface UIView (BirdKit)
 
+- (CGPoint)origin;
+- (CGFloat)xOrigin;
+- (CGFloat)yOrigin;
+- (CGFloat)centerX;
+- (CGFloat)centerY;
+- (CGFloat)halfWidth;
+- (CGFloat)halfHeight;
+- (CGSize)size;
 - (CGFloat)width;
 - (CGFloat)height;
+- (void)setOrigin:(CGPoint)origin;
+- (void)setXOrigin:(CGFloat)xOrigin;
+- (void)setYOrigin:(CGFloat)yOrigin;
+- (void)setCenterX:(CGFloat)centerX;
+- (void)setCenterY:(CGFloat)centerY;
+- (void)setSize:(CGSize)size;
+- (void)setWidth:(CGFloat)width;
+- (void)setHeight:(CGFloat)height;
 
 - (CGRect)frameIfCenteredInSuperview;
 
@@ -46,7 +62,7 @@ typedef void(^Transform3DCompletionBlock)();
 - (void)keyboardDidHide; // called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
 
 - (void)removeAllSubviews;
-
+- (void)removeSubviewWithTag:(int)tag;
 
 #pragma mark - 3D Animations
 

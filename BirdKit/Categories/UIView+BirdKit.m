@@ -12,12 +12,92 @@
 
 @implementation UIView (BirdKit)
 
+- (CGPoint)origin {
+	return self.frame.origin;
+}
+
+- (CGFloat)xOrigin {
+	return self.frame.origin.x;
+}
+
+- (CGFloat)yOrigin {
+	return self.frame.origin.y;
+}
+
+
+- (CGFloat)centerX {
+	return self.center.x;
+}
+
+- (CGFloat)centerY {
+	return self.center.y;
+}
+
+- (CGFloat)halfWidth {
+	return roundf(self.width / 2.0);
+}
+- (CGFloat)halfHeight {
+	return roundf(self.height / 2.0);
+}
+
+- (CGSize)size {
+	return self.frame.size;
+}
+
 - (CGFloat)width {
 	return self.bounds.size.width;
 }
 
 - (CGFloat)height {
 	return self.bounds.size.height;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+	CGRect aFrame = self.frame;
+	aFrame.origin = origin;
+	self.frame = aFrame;
+}
+
+- (void)setXOrigin:(CGFloat)xOrigin {
+	CGRect aFrame = self.frame;
+	aFrame.origin.x = xOrigin;
+	self.frame = aFrame;
+}
+
+- (void)setYOrigin:(CGFloat)yOrigin {
+	CGRect aFrame = self.frame;
+	aFrame.origin.y = yOrigin;
+	self.frame = aFrame;
+}
+
+- (void)setCenterX:(CGFloat)centerX {
+	CGPoint newCenter = self.center;
+	newCenter.x = centerX;
+	self.center = newCenter;
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+	CGPoint newCenter = self.center;
+	newCenter.y = centerY;
+	self.center = newCenter;
+}
+
+- (void)setSize:(CGSize)size {
+	CGRect aFrame = self.frame;
+	aFrame.size = size;
+	self.frame = aFrame;
+}
+
+- (void)setWidth:(CGFloat)width {
+	CGRect aFrame = self.frame;
+	aFrame.size.width = width;
+	self.frame = aFrame;
+}
+
+- (void)setHeight:(CGFloat)height {
+	CGRect aFrame = self.frame;
+	aFrame.size.height = height;
+	self.frame = aFrame;
 }
 
 - (CGRect)frameIfCenteredInSuperview {
@@ -107,6 +187,14 @@
 - (void)removeAllSubviews {
 	for (UIView *subview in [self.subviews copy]) {
 		[subview removeFromSuperview];
+	}
+}
+
+- (void)removeSubviewWithTag:(int)tag {
+	for (UIView *subview in [self.subviews copy]) {
+		if (subview.tag == tag) {
+			[subview removeFromSuperview];
+		}
 	}
 }
 

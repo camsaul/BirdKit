@@ -46,6 +46,8 @@
 		7EF44F02176AF1DD007EFAC6 /* BKGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536AB1769E3D900114543 /* BKGeocoder.m */; };
 		7EF44F03176AF1DD007EFAC6 /* BKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B21769E5B200114543 /* BKUtility.m */; };
 		7EF44F04176AF1DD007EFAC6 /* BKEdgeSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */; };
+		7EFCD75F1783C06D0067C395 /* BKPivotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFCD75E1783C06D0067C395 /* BKPivotViewController.m */; };
+		7EFCD7601783C06D0067C395 /* BKPivotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EFCD75E1783C06D0067C395 /* BKPivotViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+BirdKit.h"; sourceTree = "<group>"; };
 		7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+BirdKit.m"; sourceTree = "<group>"; };
 		7EF44EF7176AF19C007EFAC6 /* BirdKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BirdKit-Prefix.pch"; path = "../BirdKit/BirdKit-Prefix.pch"; sourceTree = "<group>"; };
+		7EFCD75D1783C06D0067C395 /* BKPivotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPivotViewController.h; sourceTree = "<group>"; };
+		7EFCD75E1783C06D0067C395 /* BKPivotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPivotViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,7 @@
 				7E1536B31769E66000114543 /* BKGlobalMacros.h */,
 				7E15367B1769D40E00114543 /* General Categories */,
 				7E1536921769D7A700114543 /* NavigationService */,
+				7EFCD75C1783C05A0067C395 /* Controls */,
 				7E1536A51769E29100114543 /* Logging */,
 				7E1536A91769E3A900114543 /* Utilities */,
 			);
@@ -264,6 +269,15 @@
 				7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7EFCD75C1783C05A0067C395 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				7EFCD75D1783C06D0067C395 /* BKPivotViewController.h */,
+				7EFCD75E1783C06D0067C395 /* BKPivotViewController.m */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +369,7 @@
 				7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */,
 				7E1536971769D7A700114543 /* NavigationService.m in Sources */,
 				7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */,
+				7EFCD75F1783C06D0067C395 /* BKPivotViewController.m in Sources */,
 				7E15369B1769DE1000114543 /* UIView+BirdKit.m in Sources */,
 				7E1536B01769E55E00114543 /* BKGeocoder.m in Sources */,
 				7E1536A81769E2BE00114543 /* BKLogging.m in Sources */,
@@ -376,6 +391,7 @@
 				7EF44F04176AF1DD007EFAC6 /* BKEdgeSwipeGestureRecognizer.m in Sources */,
 				7EF44EFB176AF1C7007EFAC6 /* NSArray+BirdKit.m in Sources */,
 				7EF44EFC176AF1C7007EFAC6 /* UIColor+BirdKit.m in Sources */,
+				7EFCD7601783C06D0067C395 /* BKPivotViewController.m in Sources */,
 				7E1536721769D3B500114543 /* BirdKitTests.m in Sources */,
 				7EF44F03176AF1DD007EFAC6 /* BKUtility.m in Sources */,
 				7EF44EFA176AF1C7007EFAC6 /* UIButton+BirdKit.m in Sources */,
