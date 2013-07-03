@@ -33,5 +33,7 @@ int meters_to_minutes_walk(int meters);
 
 /**
  * Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
+ *
+ * BROKEN!
  */
-void TodoAlert(NSString *formatString, ...);
+// void TodoAlert(NSString *formatString, ...);

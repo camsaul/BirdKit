@@ -37,4 +37,4 @@ typedef enum : NSUInteger {
 	LogLevelVerbose	= 15,	// 1111
 } LogLevel;
 
-static const int CurrentLogLevel = LogFlagInfo | LogCategoryAppHandler;
+static const int CurrentLogLevel = LogLevelInfo | LogCategoryAppHandler;
