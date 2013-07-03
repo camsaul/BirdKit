@@ -50,8 +50,11 @@
 @protocol BKPivotViewControllerDelegate <NSObject>
 /// Delegate should return the number of pages in the pivot view.
 - (NSUInteger)pivotViewNumberOfPages;
-/// This method is called when the pivot view is going to load a page. You can let a view extend multiple pages if you pass nil for the page(s) following it
-- (UIView *)pivotViewControllerViewForPageAtIndex:(NSUInteger)index;
+/// This method is called when the pivot view is going to load a page. You can let a view extend multiple pages by setting pageSpan to a number greater than 1 (the default).
+/// You can just pass nil for the view for those pages.
+- (UIView *)pivotViewControllerViewForPageAtIndex:(NSUInteger)index pageSpan:(NSUInteger *)pageSpan;
+
+@optional
 /// Called when the pivot VC moves (e.g., users swipes to) a page.
 - (UIView *)pivotViewControllerDidScrollToIndex:(NSUInteger)index;
 @end

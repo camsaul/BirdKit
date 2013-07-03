@@ -27,6 +27,7 @@ typedef void(^Transform3DCompletionBlock)();
 - (CGFloat)yOrigin;
 - (CGFloat)centerX;
 - (CGFloat)centerY;
+- (CGPoint)boundsCenter;
 - (CGFloat)halfWidth;
 - (CGFloat)halfHeight;
 - (CGSize)size;

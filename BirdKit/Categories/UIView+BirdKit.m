@@ -33,6 +33,10 @@
 	return self.center.y;
 }
 
+- (CGPoint)boundsCenter {
+	return CGPointMake(self.halfWidth, self.halfHeight);
+}
+
 - (CGFloat)halfWidth {
 	return roundf(self.width / 2.0);
 }

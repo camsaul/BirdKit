@@ -37,10 +37,6 @@
 		
 		self.animationDuration = 0.4;
 		self.peekAmount = 20;
-		
-		dispatch_next_run_loop(^{
-			[self reloadPagesAnimated:NO];
-		});
 	}
 	
 	return self;
@@ -92,10 +88,18 @@
 	NSUInteger numPages =  [self.delegate pivotViewNumberOfPages];
 	
 	self.scrollView.contentSize = CGSizeMake([self pageWidth] * numPages, self.scrollView.contentSize.height);
+	self.pageControl.numberOfPages = numPages;
 
+	// remove all old pages
+	for (UIView *pageView in self.pageViews) {
+		if ([pageView isKindOfClass:[UIView class]]) {
+			[pageView removeFromSuperview];
+		}
+	}
+	
 	self.pageViews = [NSMutableArray arrayWithCapacity:numPages];
 	for (int i = 0; i < numPages; i++) {
-		self.pageViews[i] = [NSNull null];
+		self.pageViews[i] = self.UnknownIndexPlaceholder;
 	}
 	
 	// load the current page (default is 0)
@@ -103,10 +107,23 @@
 }
 
 - (void)reloadPageAtIndex:(NSUInteger)index animated:(BOOL)animated {
-	id oldPage = [self.pageViews objectAtIndex:index];
+	[self reloadPageAtIndex:index animated:animated loadNextPage:YES];
+}
+
+/// if loadNextPage is YES (default) then we'll recursively call reloadPageAtIndex on the next run loop to load the page FOLLOWING this page (so it can "peek" at the user)
+- (void)reloadPageAtIndex:(NSUInteger)index animated:(BOOL)animated loadNextPage:(BOOL)loadNextPage {
+	id oldPage = self.pageViews.count ? [self.pageViews objectAtIndex:index] : nil;
 	
-	UIView *newPage = [self.delegate pivotViewControllerViewForPageAtIndex:index];
+	NSUInteger pageSpan = 1;
+	UIView *newPage = [self.delegate pivotViewControllerViewForPageAtIndex:index pageSpan:&pageSpan];
 	self.pageViews[index] = !newPage ? self.EmptyIndexPlaceholder : newPage;
+	
+	if (pageSpan > 1) {
+		for (int offset = 1; offset < pageSpan; offset++) {
+			int i = index + offset;
+			self.pageViews[i] = self.EmptyIndexPlaceholder;
+		}
+	}
 	
 	if (oldPage == newPage) return;
 	
@@ -122,31 +139,27 @@
 		}
 	}
 	
+	CGFloat pageWidth = [self pageWidth] + (self.view.width * (pageSpan - 1));
+	newPage.frame = CGRectMake([self pageWidth] * index, 0, pageWidth, self.scrollView.height);
 	[self addViewForIndex:index animated:animated];
+	
+	// go ahead and add the next page as well (on next run loop) so it can "peek" at the user
+	int numPages = self.pageViews.count;
+	if (index < numPages-1 && loadNextPage && self.pageViews[numPages-1] == self.UnknownIndexPlaceholder) {
+		dispatch_next_run_loop(^{
+			[self reloadPageAtIndex:index+1 animated:YES loadNextPage:NO];
+		});
+	}
 }
 
+/// Adds view to scrollview at index, if the object in self.pageViews at index is a UIView
 - (void)addViewForIndex:(NSUInteger)index animated:(BOOL)animated {
-	if (self.pageViews[index] == [NSNull null]) return;
+	if (![self.pageViews[index] isKindOfClass:[UIView class]]) return;
 	
 	UIView *view = self.pageViews[index];
 	
 	if (view.superview == self.scrollView) return; // already done!
 	
-	// find out how many "null" pages are directly after this view controller
-	CGFloat pageWidth = [self pageWidth];
-	for (int i = index + 1; i < self.pageViews.count; i++) {
-		if (self.pageViews[i] == self.UnknownIndexPlaceholder) {
-			[self reloadPageAtIndex:i animated:animated];			
-		}
-		if (self.pageViews[i] != self.EmptyIndexPlaceholder) {
-			break;
-		} else {
-			pageWidth += self.view.width;
-		}
-	}
-	
-	view.frame = CGRectMake([self pageWidth] * index, 0, pageWidth, self.scrollView.height);
-
 	if (animated) {
 		view.alpha = 0;
 		[self.scrollView addSubview:view];
@@ -176,12 +189,21 @@
 	
 	_currentPage = index;
 	
-	[self reloadPageAtIndex:index animated:animated];
-	[self.delegate pivotViewControllerDidScrollToIndex:index];
+	if (self.pageViews[index] == self.UnknownIndexPlaceholder) {
+		[self reloadPageAtIndex:index animated:animated];
+	}
+	if ([self.delegate respondsToSelector:@selector(pivotViewControllerDidScrollToIndex:)]) {
+		[self.delegate pivotViewControllerDidScrollToIndex:index];
+	}
 }
 
 
 #pragma mark - Overriden Setters/Getters
+
+- (void)setCurrentPage:(NSUInteger)currentPage {
+	_currentPage = currentPage;
+	self.pageControl.currentPage = currentPage;
+}
 
 - (BOOL)scrollEnabled {
 	return self.scrollView.scrollEnabled;
@@ -197,7 +219,14 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	if ((NSUInteger)self.scrollView.contentOffset.x % (int)[self pageWidth] == 0) {
-		[self setCurrentPage:(int)(self.scrollView.contentOffset.x / [self pageWidth])];
+		NSUInteger newIndex = (int)(self.scrollView.contentOffset.x / [self pageWidth]);
+		NSUInteger oldIndex = self.currentPage;
+		self.currentPage = newIndex;
+		if (newIndex > oldIndex && newIndex < (self.pageViews.count - 1)) {
+			if (self.pageViews[newIndex+1] == self.UnknownIndexPlaceholder) {
+				[self reloadPageAtIndex:newIndex+1 animated:YES loadNextPage:NO];
+			}
+		}
 	}
 }
 

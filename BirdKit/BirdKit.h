@@ -31,3 +31,6 @@
 #import "BKUtility.h"
 #import "BKGeocoder.h"
 #import "BKEdgeSwipeGestureRecognizer.h"
+
+// Controls
+#import "BKPivotViewController.h"
