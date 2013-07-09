@@ -15,6 +15,7 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryRootVCAndView:		return "RootVC/RootView";
 		case LogCategoryRouteFinder:		return "Route Finder";
 		case LogCategoryAppHandler:			return "App Handler";
+		case LogCategoryNavigationService:	return "Nav Service";
 		case LogCategoryTODO:				return "TODO";
 	}
 	assert(false); // Please add a string for log category

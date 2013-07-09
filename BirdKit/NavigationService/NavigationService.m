@@ -7,6 +7,7 @@
 //
 
 #import "NavigationService.h"
+#import "BKLogging.h"
 
 static UINavigationController *_navigationController;
 
@@ -26,52 +27,28 @@ static UINavigationController *_navigationController;
 			[class validateParams:params];
 		}
 		vc = [[class alloc] initWithParams:params];
-		NSLog(@"NAV SERVICE: Pushed view controller %@ with params: %@", destination, params);
+		BKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@ with params: %@", destination, params);
 	} else {
 		if (params) {
-			NSLog(@"NAV SERVICE: Warning! Passing params to class %@, which does not accept params.", destination);
+			BKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing params to class %@, which does not accept params.", destination);
 		}
 		vc = [[class alloc] init];
-		NSLog(@"NAV SERVICE: Pushed view controller %@", destination);
+		BKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@", destination);
+	}
+	
+	if (params[NavigationServiceDelegateParam]) {
+		if ([vc respondsToSelector:@selector(setDelegate:)]) {
+			[(id)vc setDelegate:params[NavigationServiceDelegateParam]];
+		} else {
+			BKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing NavigationServiceDelegateParam to class %@, which does not respond to setDelegate:.", destination);
+		}
 	}
 	
 	[_navigationController pushViewController:vc animated:YES];
 }
 
-@end
-
-
-@implementation NSDictionary (NavigationService)
-
-- (NSDictionary *)dictionaryByAddingValue:(NSObject *)value forKey:(NSString *)key {
-	NSMutableDictionary *newDict = [self mutableCopy];
-	[newDict setValue:value forKey:key];
-	return newDict;
-}
-
-- (BOOL)containsNumber:(NSString *)key
-{
-	NSNumber *number = [self objectForKey:key];
-	return number && [number isKindOfClass:[NSNumber class]];
-}
-
-- (NSInteger)valueForInteger:(NSString *)key
-{
-	return [self[key] integerValue];
-}
-
-- (float)valueForFloat:(NSString *)key
-{
-	return [self[key] floatValue];
-}
-
-- (double)valueForDouble:(NSString *)key {
-	return [self[key] doubleValue];
-}
-
-- (BOOL)valueForBool:(NSString *)key
-{
-	return [self[key] boolValue];
++ (void)popViewControllerAnimated:(BOOL)animated {
+	[_navigationController popViewControllerAnimated:animated];
 }
 
 @end

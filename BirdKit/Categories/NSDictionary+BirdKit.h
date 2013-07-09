@@ -16,4 +16,13 @@
 
 - (NSUInteger)deepCount;
 
+// navigation service stuff
+
+- (NSDictionary *)dictionaryByAddingValue:(NSObject *)value forKey:(NSString *)key;
+- (BOOL)containsNumber:(NSString *)key;
+- (NSInteger)valueForInteger:(NSString *)key;
+- (float)valueForFloat:(NSString *)key;
+- (double)valueForDouble:(NSString *)key;
+- (BOOL)valueForBool:(NSString *)key;
+
 @end
