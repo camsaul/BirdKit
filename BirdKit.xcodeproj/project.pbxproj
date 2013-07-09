@@ -30,6 +30,9 @@
 		7E1536B41769E75000114543 /* BKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B21769E5B200114543 /* BKUtility.m */; };
 		7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */; };
 		7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */; };
+		7E711039178BA2DC0039186F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1536831769D49E00114543 /* QuartzCore.framework */; };
+		7E711050178BC2250039186F /* NSString+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E71104F178BC2250039186F /* NSString+BirdKit.m */; };
+		7E711051178BC2250039186F /* NSString+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E71104F178BC2250039186F /* NSString+BirdKit.m */; };
 		7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */; };
 		7ED08D6C176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
 		7ED08D6D176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
@@ -112,6 +115,8 @@
 		7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKEdgeSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 		7E153734176A1A0100114543 /* NSDictionary+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BirdKit.h"; sourceTree = "<group>"; };
 		7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BirdKit.m"; sourceTree = "<group>"; };
+		7E71104E178BC2250039186F /* NSString+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BirdKit.h"; sourceTree = "<group>"; };
+		7E71104F178BC2250039186F /* NSString+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BirdKit.m"; sourceTree = "<group>"; };
 		7E888A7A176BFA63006B4E83 /* NSObject+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BirdKit.h"; sourceTree = "<group>"; };
 		7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BirdKit.m"; sourceTree = "<group>"; };
 		7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+BirdKit.h"; sourceTree = "<group>"; };
@@ -126,10 +131,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E1536AF1769E3F800114543 /* CoreLocation.framework in Frameworks */,
-				7E1536AD1769E3F200114543 /* MapKit.framework in Frameworks */,
 				7E1536841769D49E00114543 /* QuartzCore.framework in Frameworks */,
 				7E1536821769D49900114543 /* UIKit.framework in Frameworks */,
+				7E1536AF1769E3F800114543 /* CoreLocation.framework in Frameworks */,
+				7E1536AD1769E3F200114543 /* MapKit.framework in Frameworks */,
 				7E1536561769D3B500114543 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E711039178BA2DC0039186F /* QuartzCore.framework in Frameworks */,
 				7E1536641769D3B500114543 /* XCTest.framework in Frameworks */,
 				7E1536671769D3B500114543 /* UIKit.framework in Frameworks */,
 				7E1536651769D3B500114543 /* Foundation.framework in Frameworks */,
@@ -233,6 +239,8 @@
 				7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */,
 				7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */,
 				7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */,
+				7E71104E178BC2250039186F /* NSString+BirdKit.h */,
+				7E71104F178BC2250039186F /* NSString+BirdKit.m */,
 			);
 			name = "General Categories";
 			path = Categories;
@@ -370,6 +378,7 @@
 				7E1536971769D7A700114543 /* NavigationService.m in Sources */,
 				7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */,
 				7EFCD75F1783C06D0067C395 /* BKPivotViewController.m in Sources */,
+				7E711050178BC2250039186F /* NSString+BirdKit.m in Sources */,
 				7E15369B1769DE1000114543 /* UIView+BirdKit.m in Sources */,
 				7E1536B01769E55E00114543 /* BKGeocoder.m in Sources */,
 				7E1536A81769E2BE00114543 /* BKLogging.m in Sources */,
@@ -392,6 +401,7 @@
 				7EF44EFB176AF1C7007EFAC6 /* NSArray+BirdKit.m in Sources */,
 				7EF44EFC176AF1C7007EFAC6 /* UIColor+BirdKit.m in Sources */,
 				7EFCD7601783C06D0067C395 /* BKPivotViewController.m in Sources */,
+				7E711051178BC2250039186F /* NSString+BirdKit.m in Sources */,
 				7E1536721769D3B500114543 /* BirdKitTests.m in Sources */,
 				7EF44F03176AF1DD007EFAC6 /* BKUtility.m in Sources */,
 				7EF44EFA176AF1C7007EFAC6 /* UIButton+BirdKit.m in Sources */,
