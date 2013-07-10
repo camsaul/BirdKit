@@ -12,8 +12,11 @@
 
 - (void)setTextPreservingExistingAttributes:(NSString *)text {
 	if (self.attributedText.length) {
+		if (text == nil) text = @" ";
 		NSDictionary *attributes = [(NSAttributedString *)self.attributedText attributesAtIndex:0 effectiveRange:NULL];
 		self.attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+	} else {
+		self.text = text;
 	}
 }
 
