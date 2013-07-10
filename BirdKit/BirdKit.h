@@ -20,6 +20,7 @@
 #import "UIColor+BirdKit.h"
 #import "NSValue+BirdKit.h"
 #import "NSString+BirdKit.h"
+#import "UILabel+BirdKit.h"
 
 // Navigation Service
 #import "NavigationService.h"

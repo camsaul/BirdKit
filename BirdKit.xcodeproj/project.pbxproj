@@ -30,6 +30,7 @@
 		7E1536B41769E75000114543 /* BKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B21769E5B200114543 /* BKUtility.m */; };
 		7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */; };
 		7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */; };
+		7E604EEA178D3396009B9CAD /* UILabel+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E604EE9178D3396009B9CAD /* UILabel+BirdKit.m */; };
 		7E711039178BA2DC0039186F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1536831769D49E00114543 /* QuartzCore.framework */; };
 		7E711050178BC2250039186F /* NSString+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E71104F178BC2250039186F /* NSString+BirdKit.m */; };
 		7E711051178BC2250039186F /* NSString+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E71104F178BC2250039186F /* NSString+BirdKit.m */; };
@@ -115,6 +116,8 @@
 		7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKEdgeSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 		7E153734176A1A0100114543 /* NSDictionary+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BirdKit.h"; sourceTree = "<group>"; };
 		7E153735176A1A0100114543 /* NSDictionary+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BirdKit.m"; sourceTree = "<group>"; };
+		7E604EE8178D3396009B9CAD /* UILabel+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BirdKit.h"; sourceTree = "<group>"; };
+		7E604EE9178D3396009B9CAD /* UILabel+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BirdKit.m"; sourceTree = "<group>"; };
 		7E71104E178BC2250039186F /* NSString+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BirdKit.h"; sourceTree = "<group>"; };
 		7E71104F178BC2250039186F /* NSString+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BirdKit.m"; sourceTree = "<group>"; };
 		7E888A7A176BFA63006B4E83 /* NSObject+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BirdKit.h"; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */,
 				7E71104E178BC2250039186F /* NSString+BirdKit.h */,
 				7E71104F178BC2250039186F /* NSString+BirdKit.m */,
+				7E604EE8178D3396009B9CAD /* UILabel+BirdKit.h */,
+				7E604EE9178D3396009B9CAD /* UILabel+BirdKit.m */,
 			);
 			name = "General Categories";
 			path = Categories;
@@ -374,6 +379,7 @@
 				7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */,
 				7E1536B41769E75000114543 /* BKUtility.m in Sources */,
 				7E1536981769D7A700114543 /* ParamsViewController.m in Sources */,
+				7E604EEA178D3396009B9CAD /* UILabel+BirdKit.m in Sources */,
 				7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */,
 				7E1536971769D7A700114543 /* NavigationService.m in Sources */,
 				7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */,
