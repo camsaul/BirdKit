@@ -10,9 +10,13 @@
 
 @implementation NSArray (BirdKit)
 
-- (id)firstObjectOrNil {
-	if (!self.count) return nil;
-	return self[0];
+- (NSArray *)where:(NSString *)predicateFormat, ... {
+	va_list args;
+    va_start(args, predicateFormat);
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFormat arguments:args];
+	va_end(args);
+	
+	return [self filteredArrayUsingPredicate:predicate];
 }
 
 @end

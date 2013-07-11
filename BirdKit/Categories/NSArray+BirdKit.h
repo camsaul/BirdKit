@@ -10,6 +10,12 @@
 
 @interface NSArray (BirdKit)
 
-- (id)firstObjectOrNil;
+/// Modeled after Ruby's "where" functionality. Takes a NSPredicate format string and any arguments to it.
+///
+/// Basically just shorthand for using filteredArrayUsingPredicate:.
+///
+/// @param predicateFormat e.g. "name LIKE(c) 'Ca*'"
+/// @see xcdoc://ios/documentation/Cocoa/Conceptual/Predicates/predicates.html
+- (NSArray *)where:(NSString *)predicateFormat, ...;
 
 @end
