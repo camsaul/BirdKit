@@ -37,6 +37,9 @@
 		7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */; };
 		7ED08D6C176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
 		7ED08D6D176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */; };
+		7EE0175B178E25EB00B82328 /* UITextView+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE0175A178E25EB00B82328 /* UITextView+BirdKit.m */; };
+		7EE0175C178E25EB00B82328 /* UITextView+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE0175A178E25EB00B82328 /* UITextView+BirdKit.m */; };
+		7EE01760178E276700B82328 /* UIImage+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE0175F178E276700B82328 /* UIImage+BirdKit.m */; };
 		7EF44EF8176AF1C7007EFAC6 /* UIView+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E15367D1769D45300114543 /* UIView+BirdKit.m */; };
 		7EF44EF9176AF1C7007EFAC6 /* NSLayoutConstraint+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536861769D4B500114543 /* NSLayoutConstraint+BirdKit.m */; };
 		7EF44EFA176AF1C7007EFAC6 /* UIButton+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E15369E1769DE4900114543 /* UIButton+BirdKit.m */; };
@@ -124,6 +127,10 @@
 		7E888A7B176BFA63006B4E83 /* NSObject+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BirdKit.m"; sourceTree = "<group>"; };
 		7ED08D6A176C8C5C00E291BC /* NSValue+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+BirdKit.h"; sourceTree = "<group>"; };
 		7ED08D6B176C8C5C00E291BC /* NSValue+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+BirdKit.m"; sourceTree = "<group>"; };
+		7EE01759178E25EB00B82328 /* UITextView+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+BirdKit.h"; sourceTree = "<group>"; };
+		7EE0175A178E25EB00B82328 /* UITextView+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+BirdKit.m"; sourceTree = "<group>"; };
+		7EE0175E178E276700B82328 /* UIImage+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BirdKit.h"; sourceTree = "<group>"; };
+		7EE0175F178E276700B82328 /* UIImage+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BirdKit.m"; sourceTree = "<group>"; };
 		7EF44EF7176AF19C007EFAC6 /* BirdKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BirdKit-Prefix.pch"; path = "../BirdKit/BirdKit-Prefix.pch"; sourceTree = "<group>"; };
 		7EFCD75D1783C06D0067C395 /* BKPivotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKPivotViewController.h; sourceTree = "<group>"; };
 		7EFCD75E1783C06D0067C395 /* BKPivotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKPivotViewController.m; sourceTree = "<group>"; };
@@ -246,6 +253,10 @@
 				7E71104F178BC2250039186F /* NSString+BirdKit.m */,
 				7E604EE8178D3396009B9CAD /* UILabel+BirdKit.h */,
 				7E604EE9178D3396009B9CAD /* UILabel+BirdKit.m */,
+				7EE01759178E25EB00B82328 /* UITextView+BirdKit.h */,
+				7EE0175A178E25EB00B82328 /* UITextView+BirdKit.m */,
+				7EE0175E178E276700B82328 /* UIImage+BirdKit.h */,
+				7EE0175F178E276700B82328 /* UIImage+BirdKit.m */,
 			);
 			name = "General Categories";
 			path = Categories;
@@ -376,6 +387,7 @@
 			files = (
 				7ED08D6C176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */,
 				7E1536A21769E1B600114543 /* NSArray+BirdKit.m in Sources */,
+				7EE01760178E276700B82328 /* UIImage+BirdKit.m in Sources */,
 				7E888A7C176BFA63006B4E83 /* NSObject+BirdKit.m in Sources */,
 				7E1536B41769E75000114543 /* BKUtility.m in Sources */,
 				7E1536981769D7A700114543 /* ParamsViewController.m in Sources */,
@@ -385,6 +397,7 @@
 				7E153736176A1A0100114543 /* NSDictionary+BirdKit.m in Sources */,
 				7EFCD75F1783C06D0067C395 /* BKPivotViewController.m in Sources */,
 				7E711050178BC2250039186F /* NSString+BirdKit.m in Sources */,
+				7EE0175B178E25EB00B82328 /* UITextView+BirdKit.m in Sources */,
 				7E15369B1769DE1000114543 /* UIView+BirdKit.m in Sources */,
 				7E1536B01769E55E00114543 /* BKGeocoder.m in Sources */,
 				7E1536A81769E2BE00114543 /* BKLogging.m in Sources */,
@@ -400,6 +413,7 @@
 			files = (
 				7ED08D6D176C8C5C00E291BC /* NSValue+BirdKit.m in Sources */,
 				7EF44F02176AF1DD007EFAC6 /* BKGeocoder.m in Sources */,
+				7EE0175C178E25EB00B82328 /* UITextView+BirdKit.m in Sources */,
 				7EF44F00176AF1D1007EFAC6 /* ParamsViewController.m in Sources */,
 				7EF44EF8176AF1C7007EFAC6 /* UIView+BirdKit.m in Sources */,
 				7EF44EF9176AF1C7007EFAC6 /* NSLayoutConstraint+BirdKit.m in Sources */,

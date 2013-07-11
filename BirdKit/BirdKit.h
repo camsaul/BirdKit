@@ -21,6 +21,8 @@
 #import "NSValue+BirdKit.h"
 #import "NSString+BirdKit.h"
 #import "UILabel+BirdKit.h"
+#import "UITextView+BirdKit.h"
+#import "UIImage+BirdKit.h"
 
 // Navigation Service
 #import "NavigationService.h"

@@ -1,14 +1,14 @@
 //
-//  UILabel+BirdKit.m
+//  UITextView+BirdKit.m
 //  BirdKit
 //
-//  Created by Cameron Saul on 7/9/13.
+//  Created by Cameron Saul on 7/10/13.
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import "UILabel+BirdKit.h"
+#import "UITextView+BirdKit.h"
 
-@implementation UILabel (BirdKit)
+@implementation UITextView (BirdKit)
 
 - (void)setTextPreservingExistingAttributes:(NSString *)text {
 	if (self.attributedText.length) {
