@@ -36,4 +36,4 @@ int meters_to_minutes_walk(int meters);
  *
  * BROKEN!
  */
-// void TodoAlert(NSString *formatString, ...);
+void TodoAlert(NSString *formatString, ...);

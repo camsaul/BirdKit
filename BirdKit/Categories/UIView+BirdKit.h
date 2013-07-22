@@ -55,21 +55,24 @@ typedef void(^Transform3DCompletionBlock)();
 
 - (UIButton *)hiddenButton;
 - (void)addHiddenButton;
-- (void)hiddenButtonAdded; // override this to reposition the hidden button if needed
+/// override this to reposition the hidden button if needed
+- (void)hiddenButtonAdded;
 - (void)removeHiddenButton;
-- (void)hiddenButtonPressed; // default action is to call hideKeyboard. Override if needed
+/// default action is to call hideKeyboard. Override if needed
+- (void)hiddenButtonPressed;
 
-- (void)hideKeyboard; // calls resignFirstResponder on all subviews
-- (void)keyboardDidHide; // called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
+/// calls resignFirstResponder on all subviews
+- (void)hideKeyboard;
+/// called after hideKeyboard, in case you want to add additional functionality without rewriting the hideKeyboard method
+- (void)keyboardDidHide;
 
 - (void)removeAllSubviews;
 - (void)removeSubviewWithTag:(int)tag;
 
 #pragma mark - 3D Animations
 
-/**
- * Duration of 0 is considered to mean "animated = NO"
- */
+
+/// Duration of 0 is considered to mean "animated = NO"
 + (void)apply3DTransform:(CATransform3D)transform toView:(UIView *)view duration:(CGFloat)duration completion:(Transform3DCompletionBlock)completion;
 
 @end

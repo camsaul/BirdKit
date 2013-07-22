@@ -147,7 +147,7 @@ void TodoAlert(NSString *formatString, ...) {
 	NSString *message = [[NSString alloc] initWithFormat:formatString arguments:argptr];
 	[[[UIAlertView alloc] initWithTitle:@"TODO" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 	
-	BKLogTODO(formatString, argptr);
+//	BKLogTODO(formatString, argptr);
 	
 	va_end(argptr);
 }
