@@ -11,7 +11,6 @@
 @interface NSArray (BirdKit)
 
 /// Modeled after Ruby's "where" functionality. Takes a NSPredicate format string and any arguments to it.
-///
 /// Basically just shorthand for using filteredArrayUsingPredicate:.
 ///
 /// @param predicateFormat e.g. "name LIKE(c) 'Ca*'"

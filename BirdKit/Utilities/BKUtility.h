@@ -31,9 +31,7 @@ float latitude_span_to_meters(float latitudeSpan);
 float meters_to_miles(float meters);
 int meters_to_minutes_walk(int meters);
 
-/**
- * Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
- *
- * BROKEN!
- */
+/// Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
+///
+/// BROKEN!
 void TodoAlert(NSString *formatString, ...);

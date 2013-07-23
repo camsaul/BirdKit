@@ -171,9 +171,7 @@
 	}
 }
 
-/**
- * Returns YES if the view is the one being displayed for the current page.
- */
+/// Returns YES if the view is the one being displayed for the current page.
 - (BOOL)viewIsCurrentPage:(UIView *)view {
 	return self.pageViews[self.currentPage] == view;
 }

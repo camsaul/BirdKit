@@ -12,12 +12,10 @@
 
 @protocol BKPivotViewControllerDelegate;
 
-/**
- * BKPivotViewController implements a horizontally scrolling view controller with multiple pages --
- * similiar to (and inspired by) Windows Phone's PivotView.
- *
- * BKPivotViewController lazily loads pages as needed, and as such, 
- */
+/// BKPivotViewController implements a horizontally scrolling view controller with multiple pages --
+/// similiar to (and inspired by) Windows Phone's PivotView.
+///
+/// BKPivotViewController lazily loads pages as needed, and as such, 
 @interface BKPivotViewController : UIViewController <UIScrollViewDelegate>
 
 /// Page the pivot should start on
