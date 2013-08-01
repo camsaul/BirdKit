@@ -50,15 +50,15 @@
 	[ar enqueue:@(1)];
 	[ar enqueue:@(1)];
 	[ar enqueue:@(2)];
-	XCTAssertEquals(ar.count, 3, @"enqueuing is broken!");
+	XCTAssertEqual(ar.count, 3, @"enqueuing is broken!");
 	
 	NSNumber *res = [ar dequeue];
-	XCTAssertEquals(ar.count, 2, @"dequeing is broken!");
+	XCTAssertEqual(ar.count, 2, @"dequeing is broken!");
 	XCTAssertEqualObjects(res, @(1), @"dequeing is broken!");
 	
 	[ar dequeue];
 	res = [ar dequeue];
-	XCTAssertEquals(ar.count, 0, @"dequeing is broken!");
+	XCTAssertEqual(ar.count, 0, @"dequeing is broken!");
 	XCTAssertEqualObjects(res, @(2), @"dequeing is broken!");
 	
 	// try calling one too many times
@@ -67,7 +67,7 @@
 	
 	// make sure we can-requeue
 	[ar enqueue:@(5)];
-	XCTAssertEquals(ar.count, 1, @"enqueuing is broken!");
+	XCTAssertEqual(ar.count, 1, @"enqueuing is broken!");
 }
 
 @end
