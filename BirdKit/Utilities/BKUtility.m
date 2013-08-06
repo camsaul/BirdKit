@@ -80,21 +80,9 @@ void dispatch_next_run_loop(dispatch_block_t block) {
 	dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
 
-BOOL coordinate_is_valid(CLLocationCoordinate2D coordinate) {
-	return latitude_is_valid(coordinate.latitude) && longitude_is_valid(coordinate.longitude);
-}
-
-BOOL latitude_is_valid(double lat) {
-	return (lat <= 90.0 && lat >= -90.0);
-}
-
-BOOL longitude_is_valid(double lon) {
-	return (lon <= 180.0 && lon >= -180.0);
-}
-
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
-	assert(coordinate_is_valid(coordinate1));
-	assert(coordinate_is_valid(coordinate2));
+	assert(CLLocationCoordinate2DIsValid(coordinate1));
+	assert(CLLocationCoordinate2DIsValid(coordinate2));
 	
 	const int RADIUS = 6371000; // Earth's radius in meters
 	const float RAD_PER_DEG = 0.017453293;
@@ -137,6 +125,22 @@ float meters_to_miles(float meters) {
 inline int meters_to_minutes_walk(int meters) {
 	static const int AverageHumanWalkingSpeedMetersPerMinute = 2.7 * 1600.0 / 60.0; // 2.7mph * 1600 meters/mile ÷ minutes per hour
 	return meters / AverageHumanWalkingSpeedMetersPerMinute;
+}
+
+MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
+	float lat1 = coordinate1.latitude, lat2 = coordinate2.latitude, lon1 = coordinate1.longitude, lon2 = coordinate2.longitude;
+	float minLat = MIN(lat1, lat2);
+	float maxLat = MAX(lat1, lat2);
+	float minLon = MIN(lon1, lon2);
+	float maxLon = MAX(lon1, lon2);
+	
+	CLLocationCoordinate2D center = CLLocationCoordinate2DMake((lat1 + lat2) / 2.0, (lon1 + lon2) / 2.0);
+
+	return MKCoordinateRegionMake(center, MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon));
+}
+
+BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
+	return coordinate1.latitude == coordinate2.latitude && coordinate1.longitude == coordinate2.longitude;
 }
 
 extern void BKLogTODO(NSString *,...);

@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 FiveBy. All rights reserved.
 //
 
-@import UIKit;
-@import CoreLocation;
+#import <MapKit/MapKit.h>
 
 BOOL is_ipad();
 BOOL is_iphone();
@@ -23,13 +22,16 @@ CGSize current_screen_size();
 
 void dispatch_next_run_loop(dispatch_block_t block);
 
-BOOL coordinate_is_valid(CLLocationCoordinate2D coordinate);
-BOOL latitude_is_valid(double lat);
-BOOL longitude_is_valid(double lon);
 float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
 float latitude_span_to_meters(float latitudeSpan);
 float meters_to_miles(float meters);
 int meters_to_minutes_walk(int meters);
+
+/// returns a MKCoordinate region centered between the two coordinates, large enough to display both coordinates.
+MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
+
+/// returns YES if the coordinates are equal
+BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
 
 /// Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
 ///
