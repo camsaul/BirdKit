@@ -25,6 +25,12 @@ PROP CLLocationCoordinate2D coordinate;
 	if ([another class] != [self class]) return NO;
 	return (CLLocationCoordinatesEqual(self.coordinate, another.coordinate)); // consider them to be same geocoding result if they have same coordinates
 }
+- (NSUInteger)hash {
+	return (int)(self.coordinate.latitude * 7.0f) + (int)(self.coordinate.longitude * 3.0f);
+}
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<BKGeocoderResult>: %@, %@, %f, %f", self.name, self.streetAddress, self.coordinate.latitude, self.coordinate.longitude];
+}
 @end
 
 @implementation BKGeocoder
@@ -53,24 +59,35 @@ PROP CLLocationCoordinate2D coordinate;
 	}];
 }
 
-+ (void)geocodeStreetAddress:(NSString *)streetAddress city:(NSString *)city state:(NSString *)state zipCode:(NSNumber *)zipCode country:(NSString *)country completion:(BKGeocodingCompletionBlock)completionBlock {
++ (void)geocodeStreetAddress:(NSString *)streetAddress city:(NSString *)city state:(NSString *)state zipCode:(NSNumber *)zipCode
+					 country:(NSString *)country inRegion:(CLRegion *)region completion:(BKGeocodingCompletionBlock)completionBlock {
+	
 	if (streetAddress.length < 3) {
 		completionBlock(nil); // too short to even try searching yet
 		return;
 	}
-	NSAssert(city.length || state.length || zipCode, @"please provide either city or state.");
-    NSMutableDictionary *locationDictionary = [@{(id)kABPersonAddressCountryKey: country ? country : @"United States",
-												 (id)kABPersonAddressStreetKey: streetAddress} mutableCopy];
+	NSAssert(region, @"you must provide a region.");
+	
+	if (__activeRequest) {
+		[__geocoder cancelGeocode];
+	}
+	__activeRequest = YES;
+	
 	if (city.length) {
-		locationDictionary[(id)kABPersonAddressCityKey] = city;
+		streetAddress = [streetAddress stringByAppendingFormat:@", %@", city];
 	}
 	if (state.length) {
-		locationDictionary[(id)kABPersonAddressStateKey] = state;
+		streetAddress = [streetAddress stringByAppendingFormat:@", %@", state];
 	}
 	if (zipCode) {
-		locationDictionary[(id)kABPersonAddressZIPKey] = [zipCode description];
+		streetAddress = [streetAddress stringByAppendingFormat:@" %@", [zipCode description]];
 	}
-    [[[CLGeocoder alloc] init] geocodeAddressDictionary:locationDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
+	if (!country) country = @"United States";
+	streetAddress = [streetAddress stringByAppendingFormat:@", %@", country];
+	
+	[__geocoder geocodeAddressString:streetAddress inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
+		__activeRequest = NO;
+		
         if (error || placemarks.count == 0) {
             completionBlock(nil);
             return;

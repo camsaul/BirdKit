@@ -46,6 +46,8 @@
 	static int gain = 0;
 	static int cost = 1;
 	
+	if (!otherString.length) return self.length;
+	
 	// normalize strings
 	NSString *stringA = [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString];
 	NSString *stringB = [[otherString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString];
