@@ -25,6 +25,7 @@
 		7E1536B01769E55E00114543 /* BKGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536AB1769E3D900114543 /* BKGeocoder.m */; };
 		7E1536B41769E75000114543 /* BKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B21769E5B200114543 /* BKUtility.m */; };
 		7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */; };
+		7E3AB5C617B0F73700E3C5F6 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3AB5C517B0F73700E3C5F6 /* AddressBook.framework */; };
 		7E711039178BA2DC0039186F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1536831769D49E00114543 /* QuartzCore.framework */; };
 		7EEF4CA3178E601E0085BF5B /* NSArray+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */; };
 		7EEF4CA4178E601E0085BF5B /* NSArray+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */; };
@@ -114,6 +115,7 @@
 		7E1536B31769E66000114543 /* BKGlobalMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKGlobalMacros.h; sourceTree = "<group>"; };
 		7E1536B81769EB1300114543 /* BKEdgeSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKEdgeSwipeGestureRecognizer.h; sourceTree = "<group>"; };
 		7E1536B91769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKEdgeSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		7E3AB5C517B0F73700E3C5F6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		7EEF4C87178E601E0085BF5B /* NSArray+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BirdKit.h"; sourceTree = "<group>"; };
 		7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BirdKit.m"; sourceTree = "<group>"; };
 		7EEF4C89178E601E0085BF5B /* NSDictionary+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BirdKit.h"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E3AB5C617B0F73700E3C5F6 /* AddressBook.framework in Frameworks */,
 				7E1536841769D49E00114543 /* QuartzCore.framework in Frameworks */,
 				7E1536821769D49900114543 /* UIKit.framework in Frameworks */,
 				7E1536AF1769E3F800114543 /* CoreLocation.framework in Frameworks */,
@@ -197,6 +200,7 @@
 		7E1536541769D3B500114543 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E3AB5C517B0F73700E3C5F6 /* AddressBook.framework */,
 				7E1536AE1769E3F800114543 /* CoreLocation.framework */,
 				7E1536AC1769E3F200114543 /* MapKit.framework */,
 				7E1536831769D49E00114543 /* QuartzCore.framework */,
@@ -554,7 +558,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/BirdKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "BirdKit/BirdKit-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "**";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -574,7 +578,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/BirdKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "";
+				GCC_PREFIX_HEADER = "BirdKit/BirdKit-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = "**";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

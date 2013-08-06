@@ -6,14 +6,17 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface NSString (BirdKit)
 
 - (NSString *)stringByDecodingHTML;
+
+/// Encodes string to be used in an HTTP request; Shorthand for [self stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]
 - (NSString *)stringByEncodingHTML;
+
 - (NSString *)stringByRemovingHTMLTags;
+
 - (BOOL)containsString:(NSString *)otherString;
+
 - (NSInteger)distanceFromString:(NSString *)otherString;
 
 @end
