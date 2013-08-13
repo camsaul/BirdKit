@@ -23,6 +23,10 @@ typedef void(^Transform3DCompletionBlock)();
 - (CGPoint)origin;
 - (CGFloat)xOrigin;
 - (CGFloat)yOrigin;
+/// the maximum x edge of the view, equal to (xOrigin + width)
+- (CGFloat)maxX;
+/// the maximum y edge of the view, equal to (yOrigin + height)
+- (CGFloat)maxY;
 - (CGFloat)centerX;
 - (CGFloat)centerY;
 - (CGPoint)boundsCenter;
@@ -34,18 +38,28 @@ typedef void(^Transform3DCompletionBlock)();
 - (void)setOrigin:(CGPoint)origin;
 - (void)setXOrigin:(CGFloat)xOrigin;
 - (void)setYOrigin:(CGFloat)yOrigin;
+/// Sets view.center with a new x value, keeping the original y value.
 - (void)setCenterX:(CGFloat)centerX;
+/// Sets view.center with a new y value, keeping the original x value.
 - (void)setCenterY:(CGFloat)centerY;
 - (void)setSize:(CGSize)size;
 - (void)setWidth:(CGFloat)width;
 - (void)setHeight:(CGFloat)height;
+/// Adjusts the center point of the view to make its right edge (xOrigin + width) equal to this amount.
+- (void)setMaxX:(CGFloat)maxX;
+/// Adjusts the center point of the view to make its bottom edge (yOrigin + height) equal to this amount.
+- (void)setMaxY:(CGFloat)maxY;
 
 - (CGRect)frameIfCenteredInSuperview;
 
+/// Helper method to add constraints by an array of visual format strings to views passed in viewsDictionary.
 - (void)addConstraints:(NSArray *)visualFormatStrings views:(NSDictionary *)viewsDictionary;
+/// Helper method to add constraints by an array of visual format strings to views passed in viewsDictionary, using metrics in metrics dictionary.
 - (void)addConstraints:(NSArray *)visualFormatStrings metrics:(NSDictionary *)metrics views:(NSDictionary *)viewsDictionary;
 
+/// Helper method to add a constraint to keep this view centered horizontally in its superview.
 - (void)addConstraintToCenterViewHorizontally:(UIView *)view;
+/// Helper method to add a constraint to keep this view centered vertically in its superview.
 - (void)addConstraintToCenterViewVertically:(UIView *)view;
 
 - (void)setBorderColor:(UIColor *)color;

@@ -98,6 +98,7 @@ PROP CLLocationCoordinate2D coordinate;
         NSMutableArray *results = [NSMutableArray array];
         for (CLPlacemark *placemark in placemarks) {
             NSString *name = placemark.name ? placemark.name : streetAddress;
+			name = [name componentsSeparatedByString:@","][0]; // shorten name if needed
             NSString *streetAddress = nil;
             if (placemark.thoroughfare && placemark.subThoroughfare) {
                 streetAddress = [NSString stringWithFormat:@"%@ %@", [placemark subThoroughfare], [placemark thoroughfare]];

@@ -23,4 +23,3 @@
 	[[[UIAlertView alloc] initWithTitle:@"TODO" message:___message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show]; \
 	BKLog(LogFlagWarn, LogCategoryTODO, ___message); \
 }
-

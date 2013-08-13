@@ -24,6 +24,13 @@
 	return self.frame.origin.y;
 }
 
+- (CGFloat)maxX {
+	return self.frame.origin.x + self.bounds.size.width;
+}
+
+- (CGFloat)maxY {
+	return self.frame.origin.y + self.bounds.size.height;
+}
 
 - (CGFloat)centerX {
 	return self.center.x;
@@ -103,6 +110,17 @@
 	aFrame.size.height = height;
 	self.frame = aFrame;
 }
+
+- (void)setMaxX:(CGFloat)maxX {
+	CGFloat diff = maxX - self.maxX; // e.g. if we are at 300 (self.maxX) and want to move to 500 (maxX) we need to add 200 to center x point
+	self.centerX = self.centerX + diff;
+}
+
+- (void)setMaxY:(CGFloat)maxY {
+	CGFloat diff = maxY - self.maxY;
+	self.centerY = self.centerY + diff;
+}
+
 
 - (CGRect)frameIfCenteredInSuperview {
 	NSAssert(self.superview, @"must have a superview to call this method!");
