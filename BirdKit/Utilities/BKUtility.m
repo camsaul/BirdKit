@@ -38,7 +38,7 @@ BOOL is_landscape() {
 	//	}
 	//
 	//	// inspect the toInterfaceOrientation of the modal view controller if it exists and it implements the ToInterfaceOrientation property
-	//	UIViewController *presentedViewController = APP_DELEGATE.rootViewController.presentedViewController;
+	//	UIViewController *presentedViewController = App_Delegate().rootViewController.presentedViewController;
 	//	if (presentedViewController && [presentedViewController conformsToProtocol:@protocol(ToInterfaceOrientation)]) {
 	//		UIViewController<ToInterfaceOrientation> *presentedVC = (UIViewController<ToInterfaceOrientation> *)presentedViewController;
 	//		if ([presentedVC toInterfaceOrientation] != NSNotFound) {
@@ -46,7 +46,7 @@ BOOL is_landscape() {
 	//		}
 	//	}
 	//
-	//	return UIDeviceOrientationIsLandscape([(UIViewController<ToInterfaceOrientation> *)(APP_DELEGATE.rootViewController) toInterfaceOrientation]);
+	//	return UIDeviceOrientationIsLandscape([(UIViewController<ToInterfaceOrientation> *)(App_Delegate().rootViewController) toInterfaceOrientation]);
 }
 
 BOOL is_portrait() {

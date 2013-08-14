@@ -40,7 +40,9 @@ PROP CLLocationCoordinate2D coordinate;
 }
 
 + (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(BKReverseGeocdoingCompletionBlock)completionBlock {
+	BKLog(LogFlagInfo, LogCategoryLocation, @"Reverse Geocoder: Reverse geocoding %f, %f", coordinate.latitude, coordinate.longitude);
 	if (__activeRequest) {
+		BKLog(LogFlagInfo, LogCategoryLocation, @"Reverse Geocoder: An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	
@@ -68,7 +70,10 @@ PROP CLLocationCoordinate2D coordinate;
 	}
 	NSAssert(region, @"you must provide a region.");
 	
+	BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: geocoding %@, %@, %@, %f, %@", streetAddress, city, streetAddress, zipCode, country);
+	
 	if (__activeRequest) {
+		BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	__activeRequest = YES;
