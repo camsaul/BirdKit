@@ -8,8 +8,6 @@
 
 @import UIKit;
 
-static const int HiddenButtonTag = 987654;
-
 /// Save ourselves a bit of typing by defining some really common resizing masks here
 static const UIViewAutoresizing UIViewAutoresizingFlexibleVerticalMargins	= UIViewAutoresizingFlexibleTopMargin		| UIViewAutoresizingFlexibleBottomMargin;
 static const UIViewAutoresizing UIViewAutoresizingFlexibleHorizontalMargins = UIViewAutoresizingFlexibleLeftMargin		| UIViewAutoresizingFlexibleRightMargin;

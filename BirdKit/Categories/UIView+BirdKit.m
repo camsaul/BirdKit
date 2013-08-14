@@ -9,6 +9,9 @@
 #import "UIView+BirdKit.h"
 #import "NSLayoutConstraint+BirdKit.h"
 #import "UIButton+BirdKit.h"
+#import <objc/runtime.h>
+
+static char HiddenButtonKey;
 
 @implementation UIView (BirdKit)
 
@@ -163,32 +166,36 @@
 }
 
 - (UIButton *)hiddenButton {
-	for (UIView *subview in self.subviews) {
-		if (subview.tag == HiddenButtonTag) return (UIButton *)subview;
-	}
-	return nil;
+	return objc_getAssociatedObject(self, &HiddenButtonKey);
+}
+
+/// also removes old hidden button from superview
+- (void)setHiddenButton:(UIButton *)hiddenButton {
+	[self.hiddenButton removeFromSuperview];
+	objc_setAssociatedObject(self, &HiddenButtonKey, hiddenButton, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)addHiddenButton {
-	if (self.hiddenButton) return;
+	if (self.hiddenButton) {
+		[self bringSubviewToFront:self.hiddenButton];
+		return;
+	}
 	
-	UIButton *hiddenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//	hiddenButton.backgroundColor = [[UIColor magentaColor] colorWithAlphaComponent:0.2];
-	hiddenButton.tag = HiddenButtonTag;
-	hiddenButton.translatesAutoresizingMaskIntoConstraints = NO;
-	[self addSubview:hiddenButton];
-	
-	[self addConstraints:@[@"|[hiddenButton]|", @"V:|[hiddenButton]|"] views:NSDictionaryOfVariableBindings(hiddenButton)];
-	
-	[hiddenButton addTarget:self action:@selector(hiddenButtonPressed)];
-	
+	self.hiddenButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//	self.hiddenButton.backgroundColor = [[UIColor magentaColor] colorWithAlphaComponent:0.2];
+	self.hiddenButton.frame = self.bounds;
+	self.hiddenButton.autoresizingMask = UIViewAutoresizingFlexibleSize;
+	[self addSubview:self.hiddenButton];
+		
+	[self.hiddenButton addTarget:self action:@selector(hiddenButtonPressed)];
+
 	[self hiddenButtonAdded];
 }
 
 - (void)hiddenButtonAdded {}
 
 - (void)removeHiddenButton {
-	[self.hiddenButton removeFromSuperview];
+	self.hiddenButton = nil;
 }
 
 - (void)hiddenButtonPressed {
