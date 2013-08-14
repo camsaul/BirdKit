@@ -55,7 +55,7 @@ static char HiddenButtonKey;
 }
 
 - (CGSize)size {
-	return self.frame.size;
+	return self.bounds.size;
 }
 
 - (CGFloat)width {

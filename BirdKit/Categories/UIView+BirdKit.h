@@ -18,21 +18,33 @@ typedef void(^Transform3DCompletionBlock)();
 
 @interface UIView (BirdKit)
 
+/// Shorthand for self.frame.origin.
 - (CGPoint)origin;
+/// Shorthand for self.frame.origin.x
 - (CGFloat)xOrigin;
+/// Shorthand for self.frame.origin.y
 - (CGFloat)yOrigin;
 /// the maximum x edge of the view, equal to (xOrigin + width)
 - (CGFloat)maxX;
 /// the maximum y edge of the view, equal to (yOrigin + height)
 - (CGFloat)maxY;
+/// shorthand for self.center.x
 - (CGFloat)centerX;
+/// shorthand for self.center.y
 - (CGFloat)centerY;
+/// returns the rounded point in the center of the bounds
 - (CGPoint)boundsCenter;
+/// returns roundf(self.width / 2.0)
 - (CGFloat)halfWidth;
+/// returns roundf(self.height / 2.0)
 - (CGFloat)halfHeight;
+/// shorthand for self.bounds.size
 - (CGSize)size;
+/// shorthand for self.bounds.size.width
 - (CGFloat)width;
+/// shorthand for self.bounds.size.height
 - (CGFloat)height;
+
 - (void)setOrigin:(CGPoint)origin;
 - (void)setXOrigin:(CGFloat)xOrigin;
 - (void)setYOrigin:(CGFloat)yOrigin;
