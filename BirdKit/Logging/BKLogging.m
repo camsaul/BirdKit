@@ -17,6 +17,7 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryAppHandler:			return "App Handler";
 		case LogCategoryNavigationService:	return "Nav Service";
 		case LogCategoryTODO:				return "TODO";
+		case LogCategoryCoreData:			return "CoreData";
 	}
 	assert(false); // Please add a string for log category
 }

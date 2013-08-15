@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 	LogCategoryAppHandler			= (1 << 8), // 256
 	LogCategoryNavigationService	= (1 << 9), // 512
 	LogCategoryTODO					= (1 << 10),
+	LogCategoryCoreData				= (1 << 11),
 } LogCategory;
 
 void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...);
