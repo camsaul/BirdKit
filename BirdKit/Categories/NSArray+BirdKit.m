@@ -19,4 +19,62 @@
 	return [self filteredArrayUsingPredicate:predicate];
 }
 
+- (NSArray *)interleave:(NSArray *)another {
+	unsigned	remainingInSelf = self.count,
+				remainingInAnother = another.count,
+				idx = 0,
+				resultSize = MIN(remainingInSelf, remainingInAnother) * 2;
+	
+	if (!resultSize) return nil;
+
+	NSMutableArray *m = [NSMutableArray arrayWithCapacity:resultSize];
+	while (remainingInSelf > 0 && remainingInAnother > 0) {
+		[m addObject:self[idx]];
+		[m addObject:another[idx]];
+		remainingInSelf--;
+		remainingInAnother--;
+		idx++;
+	}
+	return m;
+}
+
+/// Splits an array into arrays of numPartitions items. The last array may be smaller than the rest.
+/// e.g. [@[1 2 3 4 5] partition:2] -> @[@[1 2] @[3 4] @[5]]
+- (NSArray *)partition:(NSUInteger)partitionSize {
+	unsigned count = self.count;
+	if (partitionSize > count) return self;
+	
+	unsigned numPartitions = (unsigned)ceilf((float)count / (float)partitionSize);
+	
+	NSMutableArray *partitions = [NSMutableArray arrayWithCapacity:numPartitions];
+	for (unsigned i = 0; i < count; i++) {
+		unsigned partitionNum = i / partitionSize;
+		unsigned idxInPartition = i % partitionSize; // index relative to this partition
+		
+		NSMutableArray *partition = nil;
+		if (idxInPartition == 0) {
+			// first time seeing this partition, so create it
+			partition = [NSMutableArray arrayWithCapacity:partitionSize];
+			partitions[partitionNum] = partition;
+		} else {
+			partition = partitions[partitionNum];
+		}
+		
+		partition[idxInPartition] = self[i];
+	}
+	
+	return partitions;
+}
+
+- (NSArray *)map:(ArrayMapBlock)block {
+	unsigned count = self.count;
+	if (!count) return @[];
+	NSMutableArray *m = [NSMutableArray arrayWithCapacity:count];
+	for (int i = 0; i < count; i++) {
+		id res = block(self[i]);
+		if (res) [m addObject:res];
+	}
+	return m;
+}
+
 @end

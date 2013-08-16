@@ -18,6 +18,7 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryNavigationService:	return "Nav Service";
 		case LogCategoryTODO:				return "TODO";
 		case LogCategoryCoreData:			return "CoreData";
+		case LogCategoryAPI:				return "API";
 	}
 	assert(false); // Please add a string for log category
 }

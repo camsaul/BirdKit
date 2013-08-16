@@ -25,6 +25,9 @@
 #import "UITextView+BirdKit.h"
 #import "UIView+BirdKit.h"
 
+// Model Classes
+#import "BKInfiniteSequence.h"
+
 // Navigation Service
 #import "NavigationService.h"
 #import "ParamsViewController.h"
