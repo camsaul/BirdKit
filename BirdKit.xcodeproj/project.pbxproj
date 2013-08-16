@@ -29,6 +29,8 @@
 		7E711039178BA2DC0039186F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1536831769D49E00114543 /* QuartzCore.framework */; };
 		7EAEEDBF17BDDB0900EF6964 /* BKInfiniteSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEEDBE17BDDB0900EF6964 /* BKInfiniteSequence.m */; };
 		7EAEEDC017BDDB0900EF6964 /* BKInfiniteSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEEDBE17BDDB0900EF6964 /* BKInfiniteSequence.m */; };
+		7EAEEDCB17BE3B8100EF6964 /* NSSet+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEEDCA17BE3B8100EF6964 /* NSSet+BirdKit.m */; };
+		7EAEEDCC17BE3B8100EF6964 /* NSSet+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EAEEDCA17BE3B8100EF6964 /* NSSet+BirdKit.m */; };
 		7EEF4CA3178E601E0085BF5B /* NSArray+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */; };
 		7EEF4CA4178E601E0085BF5B /* NSArray+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */; };
 		7EEF4CA5178E601E0085BF5B /* NSDictionary+BirdKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EEF4C8A178E601E0085BF5B /* NSDictionary+BirdKit.m */; };
@@ -120,6 +122,8 @@
 		7E3AB5C517B0F73700E3C5F6 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		7EAEEDBD17BDDB0900EF6964 /* BKInfiniteSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKInfiniteSequence.h; sourceTree = "<group>"; };
 		7EAEEDBE17BDDB0900EF6964 /* BKInfiniteSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKInfiniteSequence.m; sourceTree = "<group>"; };
+		7EAEEDC917BE3B8100EF6964 /* NSSet+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+BirdKit.h"; sourceTree = "<group>"; };
+		7EAEEDCA17BE3B8100EF6964 /* NSSet+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+BirdKit.m"; sourceTree = "<group>"; };
 		7EEF4C87178E601E0085BF5B /* NSArray+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BirdKit.h"; sourceTree = "<group>"; };
 		7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BirdKit.m"; sourceTree = "<group>"; };
 		7EEF4C89178E601E0085BF5B /* NSDictionary+BirdKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BirdKit.h"; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 			children = (
 				7EEF4C87178E601E0085BF5B /* NSArray+BirdKit.h */,
 				7EEF4C88178E601E0085BF5B /* NSArray+BirdKit.m */,
+				7EAEEDC917BE3B8100EF6964 /* NSSet+BirdKit.h */,
+				7EAEEDCA17BE3B8100EF6964 /* NSSet+BirdKit.m */,
 				7EEF4C89178E601E0085BF5B /* NSDictionary+BirdKit.h */,
 				7EEF4C8A178E601E0085BF5B /* NSDictionary+BirdKit.m */,
 				7EEF4C8B178E601E0085BF5B /* NSLayoutConstraint+BirdKit.h */,
@@ -426,6 +432,7 @@
 				7EEF4CA9178E601E0085BF5B /* NSMutableArray+Queue.m in Sources */,
 				7EEF4CBB178E601E0085BF5B /* UITextView+BirdKit.m in Sources */,
 				7E1536B41769E75000114543 /* BKUtility.m in Sources */,
+				7EAEEDCB17BE3B8100EF6964 /* NSSet+BirdKit.m in Sources */,
 				7E1536981769D7A700114543 /* ParamsViewController.m in Sources */,
 				7E1536BA1769EB1300114543 /* BKEdgeSwipeGestureRecognizer.m in Sources */,
 				7E1536971769D7A700114543 /* NavigationService.m in Sources */,
@@ -466,6 +473,7 @@
 				7EF44F01176AF1D6007EFAC6 /* BKLogging.m in Sources */,
 				7EEF4CA6178E601E0085BF5B /* NSDictionary+BirdKit.m in Sources */,
 				7EF44EFF176AF1D1007EFAC6 /* NavigationService.m in Sources */,
+				7EAEEDCC17BE3B8100EF6964 /* NSSet+BirdKit.m in Sources */,
 				7EEF4CBE178E601E0085BF5B /* UIView+BirdKit.m in Sources */,
 				7EEF4CAA178E601E0085BF5B /* NSMutableArray+Queue.m in Sources */,
 				7EEF4CBA178E601E0085BF5B /* UILabel+BirdKit.m in Sources */,

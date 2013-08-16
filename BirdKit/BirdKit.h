@@ -11,6 +11,7 @@
 
 // Categories
 #import "NSArray+BirdKit.h"
+#import "NSSet+BirdKit.h"
 #import "NSDictionary+BirdKit.h"
 #import "NSLayoutConstraint+BirdKit.h"
 #import "NSObject+BirdKit.h"
