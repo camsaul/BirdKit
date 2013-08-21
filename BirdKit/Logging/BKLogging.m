@@ -19,6 +19,7 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryTODO:				return "TODO";
 		case LogCategoryCoreData:			return "CoreData";
 		case LogCategoryAPI:				return "API";
+		case LogCategoryAppMode:			return "AppMode";
 	}
 	assert(false); // Please add a string for log category
 }
