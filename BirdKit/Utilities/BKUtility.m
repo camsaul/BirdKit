@@ -70,14 +70,17 @@ BOOL is_ios7() {
 	return [versionStr floatValue] >= 7.0;
 }
 
-CGSize current_screen_size() {
+inline CGSize current_screen_size() {
 	return [UIApplication sharedApplication].delegate.window.rootViewController.view.bounds.size;
 }
 
-void dispatch_next_run_loop(dispatch_block_t block) {
-	double delayInSeconds = 0.001;
+inline void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block) {
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
+
+inline void dispatch_next_run_loop(dispatch_block_t block) {
+	dispatch_after_seconds(0.001, block);
 }
 
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {

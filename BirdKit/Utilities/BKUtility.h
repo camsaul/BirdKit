@@ -20,6 +20,12 @@ BOOL is_ios7();
 
 CGSize current_screen_size();
 
+/// Shorthand for calling dispatch_after() to dispatch on the main thread after some delay.
+void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block);
+
+/// Shorthand for calling dispatch_after() to dispatch on the main thread after a millisecond.
+/// Theoretically, this should be just enough time to make the block get executed on the next run loop, which will give you enough
+/// Time to do UI updates, etc. before it is called.
 void dispatch_next_run_loop(dispatch_block_t block);
 
 float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
