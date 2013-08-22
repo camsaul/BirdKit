@@ -28,9 +28,16 @@ void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block)
 /// Time to do UI updates, etc. before it is called.
 void dispatch_next_run_loop(dispatch_block_t block);
 
+/// Fast method to calculate distance between coordinates. Uses Haversine formula, but if that fails, tries Spherical Law of Cosines.
+/// Assumes coordinates are both valid.
 float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
+
 float latitude_span_to_meters(float latitudeSpan);
+
+inline float meters_to_latitude_span(float meters);
+
 float meters_to_miles(float meters);
+
 int meters_to_minutes_walk(int meters);
 
 /// returns a MKCoordinate region centered between the two coordinates, large enough to display both coordinates.
@@ -40,6 +47,4 @@ MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D coord
 BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
 
 /// Simple way to show an alert with a formattible string as a TODO reminder. Logs the TODO as well.
-///
-/// BROKEN!
 void TodoAlert(NSString *formatString, ...);

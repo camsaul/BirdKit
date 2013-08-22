@@ -84,29 +84,29 @@ inline void dispatch_next_run_loop(dispatch_block_t block) {
 }
 
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
-	assert(CLLocationCoordinate2DIsValid(coordinate1));
-	assert(CLLocationCoordinate2DIsValid(coordinate2));
+//	assert(CLLocationCoordinate2DIsValid(coordinate1));
+//	assert(CLLocationCoordinate2DIsValid(coordinate2));
+//	
+	static const int RADIUS = 6371000; // Earth's radius in meters
+	static const float RAD_PER_DEG = 0.017453293f;
 	
-	const int RADIUS = 6371000; // Earth's radius in meters
-	const float RAD_PER_DEG = 0.017453293;
+	const float lat1 = coordinate1.latitude;
+	const float lat2 = coordinate2.latitude;
+	const float lon1 = coordinate1.longitude;
+	const float lon2 = coordinate2.longitude;
 	
-	float lat1 = coordinate1.latitude;
-	float lat2 = coordinate2.latitude;
-	float lon1 = coordinate1.longitude;
-	float lon2 = coordinate2.longitude;
+	const float dlat = lat2 - lat1;
+	const float dlon = lon2 - lon1;
 	
-	float dlat = lat2 - lat1;
-	float dlon = lon2 - lon1;
+	const float dlon_rad = dlon * RAD_PER_DEG;
+	const float dlat_rad = dlat * RAD_PER_DEG;
+	const float lat1_rad = lat1 * RAD_PER_DEG;
+	const float lon1_rad = lon1 * RAD_PER_DEG;
+	const float lat2_rad = lat2 * RAD_PER_DEG;
+	const float lon2_rad = lon2 * RAD_PER_DEG;
 	
-	float dlon_rad = dlon * RAD_PER_DEG;
-	float dlat_rad = dlat * RAD_PER_DEG;
-	float lat1_rad = lat1 * RAD_PER_DEG;
-	float lon1_rad = lon1 * RAD_PER_DEG;
-	float lat2_rad = lat2 * RAD_PER_DEG;
-	float lon2_rad = lon2 * RAD_PER_DEG;
-	
-	float a = pow((sinf(dlat_rad/2)), 2) + cosf(lat1_rad) * cosf(lat2_rad) * pow(sinf(dlon_rad/2),2);
-	float c = 2 * atan2f( sqrt(a), sqrt(1-a));
+	const float a = pow((sinf(dlat_rad/2.0f)), 2.0f) + cosf(lat1_rad) * cosf(lat2_rad) * pow(sinf(dlon_rad/2.0f),2.0f);
+	const float c = 2.0f * atan2f( sqrt(a), sqrt(1.0f-a));
 	float d = RADIUS * c;
 	
 	if (isnan(d)) {
@@ -116,9 +116,14 @@ inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CL
     return d; // Return our calculated distance
 }
 
-float latitude_span_to_meters(float latitudeSpan) {
+inline float latitude_span_to_meters(float latitudeSpan) {
 	const float metersPerLatitudeDegree = 111000; // 1 degree lat is always 111km
 	return metersPerLatitudeDegree * latitudeSpan;
+}
+
+inline float meters_to_latitude_span(float meters) {
+	const float metersPerLatitudeDegree = 111000; // 1 degree lat is always 111km
+	return meters / metersPerLatitudeDegree;
 }
 
 float meters_to_miles(float meters) {
@@ -130,16 +135,10 @@ inline int meters_to_minutes_walk(int meters) {
 	return meters / AverageHumanWalkingSpeedMetersPerMinute;
 }
 
-MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
-	float lat1 = coordinate1.latitude, lat2 = coordinate2.latitude, lon1 = coordinate1.longitude, lon2 = coordinate2.longitude;
-	float minLat = MIN(lat1, lat2);
-	float maxLat = MAX(lat1, lat2);
-	float minLon = MIN(lon1, lon2);
-	float maxLon = MAX(lon1, lon2);
-	
-	CLLocationCoordinate2D center = CLLocationCoordinate2DMake((lat1 + lat2) / 2.0, (lon1 + lon2) / 2.0);
-
-	return MKCoordinateRegionMake(center, MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon));
+MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D c1, CLLocationCoordinate2D c2) {
+	const CLLocationCoordinate2D center = CLLocationCoordinate2DMake((c1.latitude + c2.latitude) / 2.0, (c1.longitude + c2.longitude) / 2.0);
+	const float dist = distance_between_coordinates(c1, c2) * 1.25f; // zoom out a little bit so they both fit on screen
+	return MKCoordinateRegionMakeWithDistance(center, dist, dist);
 }
 
 BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
@@ -153,8 +152,6 @@ void TodoAlert(NSString *formatString, ...) {
 	va_start(argptr, formatString);
 	NSString *message = [[NSString alloc] initWithFormat:formatString arguments:argptr];
 	[[[UIAlertView alloc] initWithTitle:@"TODO" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-	
-//	BKLogTODO(formatString, argptr);
 	
 	va_end(argptr);
 }

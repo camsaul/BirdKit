@@ -35,4 +35,10 @@ typedef id(^ArrayMapBlock)(id obj);
 /// Returns empty array if self is empty.
 - (NSArray *)map:(ArrayMapBlock)block;
 
+/// Classic lisp mapping function, using a selector. Returns a new array of the results of calling method on every object in array.
+- (NSArray *)mapm:(SEL)sel;
+
+#define MAP(METHOD_NAME, NSARRAY) [NSARRAY mapm:@selector(METHOD_NAME)]
+#define MAPB(ARRAY_MAP_BLOCK, NSARRAY) [NSARRAY map:ARRAY_MAP_BLOCK]
+
 @end

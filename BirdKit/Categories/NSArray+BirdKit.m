@@ -77,4 +77,18 @@
 	return m;
 }
 
+- (NSArray *)mapm:(SEL)sel {
+	unsigned count = self.count;
+	if (!count) return @[];
+	NSMutableArray *m = [NSMutableArray arrayWithCapacity:count];
+	for (int i = 0; i < count; i++) {
+		id obj = self[i];
+		IMP imp = [obj methodForSelector:sel];
+		id res = imp(self[i], sel);
+		if (res) [m addObject:res];
+	}
+	return m;
+	
+}
+
 @end
