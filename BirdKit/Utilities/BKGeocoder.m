@@ -40,9 +40,9 @@ PROP CLLocationCoordinate2D coordinate;
 }
 
 + (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(BKReverseGeocdoingCompletionBlock)completionBlock {
-	BKLog(LogFlagInfo, LogCategoryLocation, @"Reverse Geocoder: Reverse geocoding %f, %f", coordinate.latitude, coordinate.longitude);
+	BKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding %f, %f", coordinate.latitude, coordinate.longitude);
 	if (__activeRequest) {
-		BKLog(LogFlagInfo, LogCategoryLocation, @"Reverse Geocoder: An existing geocoding request has been canceled.");
+		BKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	
@@ -55,42 +55,42 @@ PROP CLLocationCoordinate2D coordinate;
 			return;
 		}
 		CLPlacemark *placemark = placemarks[0];
-		NSString *address = placemark.addressDictionary[@"Street"];
-		BKLog(LogFlagInfo, LogCategoryLocation, @"Reverse Geocoder: %@", address);
+		NSString *address = placemark.addressDictionary[@"Street"]; // <- what's the real constant key
+		BKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding result: %@", address);
 		completionBlock(address);
 	}];
 }
 
-+ (void)geocodeStreetAddress:(NSString *)streetAddress city:(NSString *)city state:(NSString *)state zipCode:(NSNumber *)zipCode
++ (void)geocodeStreetAddress:(NSString *)requestedStreetAddress city:(NSString *)city state:(NSString *)state zipCode:(NSNumber *)zipCode
 					 country:(NSString *)country inRegion:(CLRegion *)region completion:(BKGeocodingCompletionBlock)completionBlock {
 	
-	if (streetAddress.length < 3) {
+	if (requestedStreetAddress.length < 3) {
 		completionBlock(nil); // too short to even try searching yet
 		return;
 	}
 	NSAssert(region, @"you must provide a region.");
 	
-	BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: geocoding %@, %@, %@, %@, %@", streetAddress, city, streetAddress, zipCode, country);
+	BKLog(LogFlagInfo, LogCategoryGeocoder, @"geocoding %@, %@, %@, %@, %@", requestedStreetAddress, city, state, zipCode, country);
 	
 	if (__activeRequest) {
-		BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: An existing geocoding request has been canceled.");
+		BKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	__activeRequest = YES;
 	
 	if (city.length) {
-		streetAddress = [streetAddress stringByAppendingFormat:@", %@", city];
+		requestedStreetAddress = [requestedStreetAddress stringByAppendingFormat:@", %@", city];
 	}
 	if (state.length) {
-		streetAddress = [streetAddress stringByAppendingFormat:@", %@", state];
+		requestedStreetAddress = [requestedStreetAddress stringByAppendingFormat:@", %@", state];
 	}
 	if (zipCode) {
-		streetAddress = [streetAddress stringByAppendingFormat:@" %@", [zipCode description]];
+		requestedStreetAddress = [requestedStreetAddress stringByAppendingFormat:@" %@", [zipCode description]];
 	}
 	if (!country) country = @"United States";
-	streetAddress = [streetAddress stringByAppendingFormat:@", %@", country];
+	requestedStreetAddress = [requestedStreetAddress stringByAppendingFormat:@", %@", country];
 	
-	[__geocoder geocodeAddressString:streetAddress inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
+	[__geocoder geocodeAddressString:requestedStreetAddress inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
 		__activeRequest = NO;
 		
         if (error || placemarks.count == 0) {
@@ -98,37 +98,37 @@ PROP CLLocationCoordinate2D coordinate;
             return;
         }
 		
-		BKLog(LogFlagInfo, LogCategoryLocation, @"%d results for '%@' geocoding", placemarks.count, streetAddress);
+		BKLog(LogFlagInfo, LogCategoryGeocoder, @"%d results for '%@' geocoding", placemarks.count, requestedStreetAddress);
         
         NSMutableArray *results = [NSMutableArray array];
         for (CLPlacemark *placemark in placemarks) {
-            NSString *streetAddress = nil;
+            NSString *actualStreetAddress = nil;
             if (placemark.thoroughfare && placemark.subThoroughfare) {
-                streetAddress = [NSString stringWithFormat:@"%@ %@", [placemark subThoroughfare] /* 937A */, [placemark thoroughfare] /* Howard St */];
+                actualStreetAddress = [NSString stringWithFormat:@"%@ %@", [placemark subThoroughfare] /* 937A */, [placemark thoroughfare] /* Howard St */];
             } else if (placemark.thoroughfare) {
-                streetAddress = placemark.thoroughfare;
+                actualStreetAddress = placemark.thoroughfare;
             } else if (placemark.subThoroughfare) {
-                streetAddress = placemark.subThoroughfare;
+                actualStreetAddress = placemark.subThoroughfare;
             }
-			// want our name to be something like '937A Howard', otherwise just take the first part of placemark name (probably whatever the user typed in)
-			NSString *name = streetAddress ? streetAddress : [placemark.name componentsSeparatedByString:@","][0];
+			// want our name to be something like '937A Howard', otherwise try for placemark name (probably nil), otherwise just take the first part of whatever the user typed in
+			NSString *name = actualStreetAddress.length ? actualStreetAddress : placemark.name.length ? placemark.name : [requestedStreetAddress componentsSeparatedByString:@","][0];
 			
             if (placemark.locality) {
-                if (streetAddress) {
-                    streetAddress = [streetAddress stringByAppendingFormat:@", %@", placemark.locality];
+                if (actualStreetAddress) {
+                    actualStreetAddress = [actualStreetAddress stringByAppendingFormat:@", %@", placemark.locality];
                 } else {
-                    streetAddress = placemark.locality;
+                    actualStreetAddress = placemark.locality;
                 }
             }
             if (placemark.administrativeArea) {
-                if (streetAddress) {
-                    streetAddress = [streetAddress stringByAppendingFormat:@", %@", placemark.administrativeArea];
+                if (actualStreetAddress) {
+                    actualStreetAddress = [actualStreetAddress stringByAppendingFormat:@", %@", placemark.administrativeArea];
                 } else {
-                    streetAddress = placemark.administrativeArea;
+                    actualStreetAddress = placemark.administrativeArea;
                 }
             }
 			BKGeocoderResult *result = [[BKGeocoderResult alloc] init];
-			result.streetAddress = streetAddress;
+			result.streetAddress = actualStreetAddress;
 			result.name = name;
 			result.coordinate = placemark.location.coordinate;
 			[results addObject:result];

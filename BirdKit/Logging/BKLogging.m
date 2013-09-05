@@ -25,6 +25,7 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryWalkingDirections:		return "WalkingDirs";
 		case LogCategoryPredictions:				return "Predictions";
 		case LogCategorySearchResultsManager:	return "SearchResultsManager";
+		case LogCategoryGeocoder:				return "Geocoder";
 	}
 	assert(false); // Please add a string for log category
 }
