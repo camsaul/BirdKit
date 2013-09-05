@@ -33,12 +33,21 @@
 	return [[regex stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, self.length) withTemplate:@" "] stringByReplacingOccurrencesOfString:@"  " withString:@" "];
 }
 
+
 - (BOOL)containsString:(NSString *)otherString {
+	return [self containsString:otherString options:0];
+}
+
+- (BOOL)containsStringCaseAndDiacriticInsensitve:(NSString *)otherString {
+	return [self containsString:otherString options:NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch];
+}
+
+- (BOOL)containsString:(NSString *)otherString options:(NSStringCompareOptions)options {
 	if (!otherString) {
 		return NO;
 	}
 	
-	NSRange range = [self rangeOfString:otherString];
+	NSRange range = [self rangeOfString:otherString options:options];
 	return !NSEqualRanges(NSMakeRange(NSNotFound, 0), range);
 }
 
