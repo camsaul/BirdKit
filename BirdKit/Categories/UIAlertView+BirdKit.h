@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UIAlertView+BirdKit.h
 //  BirdKit
 //

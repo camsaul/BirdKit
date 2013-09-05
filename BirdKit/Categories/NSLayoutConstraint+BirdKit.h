@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  NSLayoutConstraint+BirdKit.h
 //  BirdKit
 //

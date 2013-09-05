@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UITextView+BirdKit.h
 //  BirdKit
 //

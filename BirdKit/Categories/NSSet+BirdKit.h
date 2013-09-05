@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  NSSet+BirdKit.h
 //  BirdKit
 //

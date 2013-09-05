@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  BirdKitTests.m
 //  BirdKitTests
 //

@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  NSMutableArray+Queue.h
 //  BirdKit
 //

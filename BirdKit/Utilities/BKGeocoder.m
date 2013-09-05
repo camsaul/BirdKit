@@ -102,16 +102,17 @@ PROP CLLocationCoordinate2D coordinate;
         
         NSMutableArray *results = [NSMutableArray array];
         for (CLPlacemark *placemark in placemarks) {
-            NSString *name = placemark.name ? placemark.name : streetAddress;
-			name = [name componentsSeparatedByString:@","][0]; // shorten name if needed
             NSString *streetAddress = nil;
             if (placemark.thoroughfare && placemark.subThoroughfare) {
-                streetAddress = [NSString stringWithFormat:@"%@ %@", [placemark subThoroughfare], [placemark thoroughfare]];
+                streetAddress = [NSString stringWithFormat:@"%@ %@", [placemark subThoroughfare] /* 937A */, [placemark thoroughfare] /* Howard St */];
             } else if (placemark.thoroughfare) {
                 streetAddress = placemark.thoroughfare;
             } else if (placemark.subThoroughfare) {
                 streetAddress = placemark.subThoroughfare;
             }
+			// want our name to be something like '937A Howard', otherwise just take the first part of placemark name (probably whatever the user typed in)
+			NSString *name = streetAddress ? streetAddress : [placemark.name componentsSeparatedByString:@","][0];
+			
             if (placemark.locality) {
                 if (streetAddress) {
                     streetAddress = [streetAddress stringByAppendingFormat:@", %@", placemark.locality];

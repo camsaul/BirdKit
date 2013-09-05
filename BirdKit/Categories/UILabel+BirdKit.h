@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UILabel+BirdKit.h
 //  BirdKit
 //

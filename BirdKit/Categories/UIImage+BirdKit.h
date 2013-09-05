@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UIImage+BirdKit.h
 //  BirdKit
 //
