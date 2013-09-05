@@ -28,6 +28,7 @@ typedef enum : NSUInteger {
 	LogCategoryAppMode				= 1 << 13,
 	LogCategoryWalkingDirections		= 1 << 14,
 	LogCategoryPredictions			= 1 << 15,
+	LogCategorySearchResultsManager	= 1 << 16,
 } LogCategory;
 
 void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...);
