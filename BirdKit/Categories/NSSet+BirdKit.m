@@ -14,7 +14,8 @@
 - (NSSet *)map:(SetMapBlock)block {
 	if (!self) return [NSSet set];
 	
-	return [NSSet setWithArray:[self.allObjects map:block]];
+	__block NSArray *allObjects = self.allObjects;
+	return [NSSet setWithArray:[allObjects map:block]];
 }
 
 @end

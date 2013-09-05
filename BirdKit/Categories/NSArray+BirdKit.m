@@ -71,7 +71,8 @@
 	if (!count) return @[];
 	NSMutableArray *m = [NSMutableArray arrayWithCapacity:count];
 	for (int i = 0; i < count; i++) {
-		id res = block(self[i]);
+		__block id obj = self[i];
+		id res = block(obj);
 		if (res) [m addObject:res];
 	}
 	return m;

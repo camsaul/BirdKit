@@ -30,10 +30,6 @@ static const char *string_for_log_category(LogCategory category) {
 
 void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...) {
 	if (CurrentLogLevel & (flag|category)) {
-		if (!formatString) {
-			printf("[%s]\n", string_for_log_category(category));
-			return;
-		}
 		va_list argptr;
 		va_start(argptr, formatString);
 		NSString *string = [[NSString alloc] initWithFormat:(NSString *)formatString arguments:argptr];

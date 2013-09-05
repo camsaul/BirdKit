@@ -200,7 +200,11 @@
     CGContextClipToMask(context, rect, self.CGImage);
     CGContextDrawLinearGradient(context, gradient, CGPointMake(0,0), CGPointMake(0,self.size.height * scale), 0);
     UIImage *gradientImage = UIGraphicsGetImageFromCurrentImageContext();
+
     UIGraphicsEndImageContext();
+	CGColorSpaceRelease(space);
+	CGGradientRelease(gradient);
+	
     return gradientImage;
 }
 

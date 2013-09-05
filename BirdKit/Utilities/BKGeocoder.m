@@ -70,7 +70,7 @@ PROP CLLocationCoordinate2D coordinate;
 	}
 	NSAssert(region, @"you must provide a region.");
 	
-	BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: geocoding %@, %@, %@, %f, %@", streetAddress, city, streetAddress, zipCode, country);
+	BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: geocoding %@, %@, %@, %@, %@", streetAddress, city, streetAddress, zipCode, country);
 	
 	if (__activeRequest) {
 		BKLog(LogFlagInfo, LogCategoryLocation, @"Geocoder: An existing geocoding request has been canceled.");
