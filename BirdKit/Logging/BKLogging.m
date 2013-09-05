@@ -8,6 +8,8 @@
 
 #import "BKLogging.h"
 
+static int CurrentLogLevel = LogLevelInfo | LogCategoryAppHandler;
+
 static const char *string_for_log_category(LogCategory category) {
 	switch (category) {
 		case LogCategoryEtc:					return "Etc";
@@ -26,11 +28,15 @@ static const char *string_for_log_category(LogCategory category) {
 	assert(false); // Please add a string for log category
 }
 
-void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...) {
+void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...) {
 	if (CurrentLogLevel & (flag|category)) {
+		if (!formatString) {
+			printf("[%s]\n", string_for_log_category(category));
+			return;
+		}
 		va_list argptr;
 		va_start(argptr, formatString);
-		NSString *string = [[NSString alloc] initWithFormat:formatString arguments:argptr];
+		NSString *string = [[NSString alloc] initWithFormat:(NSString *)formatString arguments:argptr];
 		printf("[%s] %s\n", string_for_log_category(category), [string cStringUsingEncoding:NSUTF8StringEncoding]);
 		va_end(argptr);
 	}
@@ -41,4 +47,8 @@ void BKLogTODO(NSString *formatString, ...) {
 	va_start(argptr, formatString);
 	BKLog(LogFlagWarn, LogCategoryTODO, formatString, argptr);
 	va_end(argptr);
+}
+
+void BKLogSetLogLevel(int loglevel) {
+	CurrentLogLevel = loglevel;
 }

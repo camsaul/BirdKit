@@ -30,7 +30,7 @@ typedef enum : NSUInteger {
 	LogCategoryPredictions			= 1 << 15,
 } LogCategory;
 
-void BKLog(LogFlag flag, LogCategory category, NSString *formatString, ...);
+void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...);
 void BKLogTODO(NSString *formatString, ...);
 
 
@@ -43,4 +43,5 @@ typedef enum : NSUInteger {
 	LogLevelVerbose	= 15,	// 1111
 } LogLevel;
 
-static const int CurrentLogLevel = LogLevelInfo | LogCategoryAppHandler;
+/// call this method to set the logging level for the app.
+void BKLogSetLogLevel(int loglevel);
