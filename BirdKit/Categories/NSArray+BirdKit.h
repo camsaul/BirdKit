@@ -39,6 +39,8 @@ typedef id(^ArrayMapBlock)(id obj);
 - (NSArray *)mapm:(SEL)sel;
 
 #define MAP(METHOD_NAME, NSARRAY) [NSARRAY mapm:@selector(METHOD_NAME)]
-#define MAPB(ARRAY_MAP_BLOCK, NSARRAY) [NSARRAY map:ARRAY_MAP_BLOCK]
+
+NSArray *mapm(SEL selector, NSArray *array);
+NSArray *mapb(ArrayMapBlock block, NSArray *array);
 
 @end

@@ -92,4 +92,12 @@
 	
 }
 
+inline NSArray *mapm(SEL selector, NSArray *array) {
+	return [array mapm:selector];
+}
+
+inline NSArray *mapb(ArrayMapBlock block, NSArray *array) {
+	return [array map:block];
+}
+
 @end
