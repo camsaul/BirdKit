@@ -8,7 +8,8 @@
 
 #import "BKLogging.h"
 
-static int CurrentLogLevel = LogLevelInfo | LogCategoryAppHandler;
+static int CurrentLogLevel = LogLevelInfo;
+int *BKLogLevel = &CurrentLogLevel;
 
 static const char *string_for_log_category(LogCategory category) {
 	switch (category) {
@@ -26,6 +27,8 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryPredictions:				return "Predictions";
 		case LogCategorySearchResultsManager:	return "SearchResultsManager";
 		case LogCategoryGeocoder:				return "Geocoder";
+		case LogCategoryDataSerializer:			return "DataSerialzer";
+		case LogCategoryDataImporter:			return "DataImporter";
 	}
 	assert(false); // Please add a string for log category
 }
@@ -45,8 +48,4 @@ void BKLogTODO(NSString *formatString, ...) {
 	va_start(argptr, formatString);
 	BKLog(LogFlagWarn, LogCategoryTODO, formatString, argptr);
 	va_end(argptr);
-}
-
-void BKLogSetLogLevel(int loglevel) {
-	CurrentLogLevel = loglevel;
 }

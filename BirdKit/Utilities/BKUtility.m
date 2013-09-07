@@ -84,9 +84,6 @@ inline void dispatch_next_run_loop(dispatch_block_t block) {
 }
 
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
-//	assert(CLLocationCoordinate2DIsValid(coordinate1));
-//	assert(CLLocationCoordinate2DIsValid(coordinate2));
-//	
 	static const int RADIUS = 6371000; // Earth's radius in meters
 	static const float RAD_PER_DEG = 0.017453293f;
 	
