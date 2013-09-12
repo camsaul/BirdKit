@@ -19,3 +19,14 @@
 }
 
 @end
+
+NSSet *filter_s(SetFilterBlock filterBlock, NSSet *set) {
+	if (!set) return nil;
+	if (!set.count) return set;
+	
+	NSMutableSet *mSet = [NSMutableSet set];
+	for (id obj in set) {
+		if (filterBlock(obj)) [mSet addObject:obj];
+	}
+	return mSet;
+}

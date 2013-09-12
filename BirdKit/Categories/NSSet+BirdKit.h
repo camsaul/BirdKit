@@ -8,6 +8,8 @@
 
 typedef id(^SetMapBlock)(id obj);
 
+typedef BOOL(^SetFilterBlock)(id obj);
+
 @interface NSSet (BirdKit)
 
 /// Classic lisp mapping function, using blocks. Returns a new set of the results of applying block to every element in self.
@@ -16,5 +18,7 @@ typedef id(^SetMapBlock)(id obj);
 /// will be added in that case.
 /// Returns empty set if self is empty.
 - (NSSet *)map:(SetMapBlock)block;
+
+NSSet *filter_s(SetFilterBlock filterBlock, NSSet *set);
 
 @end
