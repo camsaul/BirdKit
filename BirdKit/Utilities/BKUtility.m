@@ -66,8 +66,11 @@ BOOL is_retina() {
 }
 
 BOOL is_ios7() {
-	NSString *versionStr = [[UIDevice currentDevice] systemVersion];
-	return [versionStr floatValue] >= 7.0;
+	static BOOL _is_ios7 = -1;
+	if (_is_ios7 == -1) {
+		_is_ios7 = [[UIDevice currentDevice] systemVersion].floatValue >= 7.0f;
+	}
+	return _is_ios7;
 }
 
 inline CGSize current_screen_size() {

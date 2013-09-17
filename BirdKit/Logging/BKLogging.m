@@ -11,6 +11,7 @@
 static int CurrentLogLevel = LogLevelInfo;
 int *DBKLogLevel = &CurrentLogLevel;
 
+#pragma GCC diagnostic ignored "-Wunused"
 static const char *string_for_log_category(LogCategory category) {
 	switch (category) {
 		case LogCategoryEtc:						return "Etc";
