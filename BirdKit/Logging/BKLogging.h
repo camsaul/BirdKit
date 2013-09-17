@@ -32,6 +32,7 @@ typedef enum : NSUInteger {
 	LogCategoryGeocoder				= 1 << 17,
 	LogCategoryDataSerializer		= 1 << 18,
 	LogCategoryDataImporter			= 1 << 19,
+	LogCategoryMap					= 1 << 20,
 } LogCategory;
 
 void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...);

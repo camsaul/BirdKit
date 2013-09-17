@@ -29,19 +29,25 @@ static const char *string_for_log_category(LogCategory category) {
 		case LogCategoryGeocoder:				return "Geocoder";
 		case LogCategoryDataSerializer:			return "DataSerialzer";
 		case LogCategoryDataImporter:			return "DataImporter";
+		case LogCategoryMap:						return "Map";
 	}
 	assert(false); // Please add a string for log category
 }
 
-void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...) {
-	if (CurrentLogLevel & (flag|category)) {
-		va_list argptr;
-		va_start(argptr, formatString);
-		NSString *string = [[NSString alloc] initWithFormat:(NSString *)formatString arguments:argptr];
-		printf("[%s] %s\n", string_for_log_category(category), [string cStringUsingEncoding:NSUTF8StringEncoding]);
-		va_end(argptr);
+#if DEBUG
+	void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...) {
+		if (CurrentLogLevel & (flag|category)) {
+			va_list argptr;
+			va_start(argptr, formatString);
+			NSString *string = [[NSString alloc] initWithFormat:(NSString *)formatString arguments:argptr];
+			printf("[%s] %s\n", string_for_log_category(category), [string cStringUsingEncoding:NSUTF8StringEncoding]);
+			va_end(argptr);
+		}
 	}
-}
+#else 
+	// empty inline function, hopefully compiler will optimize out this entire call
+	inline void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...) {}
+#endif
 
 void BKLogTODO(NSString *formatString, ...) {
 	va_list argptr;
