@@ -40,9 +40,9 @@ PROP CLLocationCoordinate2D coordinate;
 }
 
 + (void)reverseGeocodeCoordinate:(CLLocationCoordinate2D)coordinate completion:(BKReverseGeocdoingCompletionBlock)completionBlock {
-	BKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding %f, %f", coordinate.latitude, coordinate.longitude);
+	DBKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding %f, %f", coordinate.latitude, coordinate.longitude);
 	if (__activeRequest) {
-		BKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
+		DBKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	
@@ -56,7 +56,7 @@ PROP CLLocationCoordinate2D coordinate;
 		}
 		CLPlacemark *placemark = placemarks[0];
 		NSString *address = placemark.addressDictionary[@"Street"]; // <- what's the real constant key
-		BKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding result: %@", address);
+		DBKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding result: %@", address);
 		completionBlock(address);
 	}];
 }
@@ -70,10 +70,10 @@ PROP CLLocationCoordinate2D coordinate;
 	}
 	NSAssert(region, @"you must provide a region.");
 	
-	BKLog(LogFlagInfo, LogCategoryGeocoder, @"geocoding %@, %@, %@, %@, %@", requestedStreetAddress, city, state, zipCode, country);
+	DBKLog(LogFlagInfo, LogCategoryGeocoder, @"geocoding %@, %@, %@, %@, %@", requestedStreetAddress, city, state, zipCode, country);
 	
 	if (__activeRequest) {
-		BKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
+		DBKLog(LogFlagInfo, LogCategoryGeocoder, @"An existing geocoding request has been canceled.");
 		[__geocoder cancelGeocode];
 	}
 	__activeRequest = YES;
@@ -98,7 +98,7 @@ PROP CLLocationCoordinate2D coordinate;
             return;
         }
 		
-		BKLog(LogFlagInfo, LogCategoryGeocoder, @"%d results for '%@' geocoding", placemarks.count, requestedStreetAddress);
+		DBKLog(LogFlagInfo, LogCategoryGeocoder, @"%d results for '%@' geocoding", placemarks.count, requestedStreetAddress);
         
         NSMutableArray *results = [NSMutableArray array];
         for (CLPlacemark *placemark in placemarks) {

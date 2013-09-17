@@ -38,6 +38,12 @@ typedef enum : NSUInteger {
 void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...);
 void BKLogTODO(NSString *formatString, ...);
 
+#if DEBUG
+	#define DBKLog(LOG_FLAG, LOG_CATEGORY, ...) BKLog(LOG_FLAG, LOG_CATEGORY, __VA_ARGS__)
+#else
+	#define DBKLog(__VA_ARGS__) ;
+#endif
+
 
 // ---------- DEFAULT LOGGING LEVEL ----------
 
@@ -50,4 +56,4 @@ typedef enum : NSUInteger {
 
 /// Change this value to set the logging level for the app (e.g., you may want to set it to 0 for production builds). Default is LogLevelInfo.
 /// Note you may also use category flags as part of this bitmask, e.g. LogLevelWarn|LogLevelAPI (show errors, warnings, and everything in the API category)
-extern int *BKLogLevel;
+extern int *DBKLogLevel;

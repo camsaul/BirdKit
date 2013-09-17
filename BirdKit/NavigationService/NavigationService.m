@@ -27,20 +27,20 @@ static UINavigationController *_navigationController;
 			[class validateParams:params];
 		}
 		vc = [[class alloc] initWithParams:params];
-		BKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@ with params: %@", destination, params);
+		DBKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@ with params: %@", destination, params);
 	} else {
 		if (params) {
-			BKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing params to class %@, which does not accept params.", destination);
+			DBKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing params to class %@, which does not accept params.", destination);
 		}
 		vc = [[class alloc] init];
-		BKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@", destination);
+		DBKLog(LogFlagInfo, LogCategoryNavigationService, @"Pushed view controller %@", destination);
 	}
 	
 	if (params[NavigationServiceDelegateParam]) {
 		if ([vc respondsToSelector:@selector(setDelegate:)]) {
 			[(id)vc setDelegate:params[NavigationServiceDelegateParam]];
 		} else {
-			BKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing NavigationServiceDelegateParam to class %@, which does not respond to setDelegate:.", destination);
+			DBKLog(LogFlagWarn, LogCategoryNavigationService, @"Warning! Passing NavigationServiceDelegateParam to class %@, which does not respond to setDelegate:.", destination);
 		}
 	}
 	

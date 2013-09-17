@@ -142,7 +142,7 @@ BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCo
 	return coordinate1.latitude == coordinate2.latitude && coordinate1.longitude == coordinate2.longitude;
 }
 
-extern void BKLogTODO(NSString *,...);
+extern void DBKLogTODO(NSString *,...);
 
 void TodoAlert(NSString *formatString, ...) {
 	va_list argptr;

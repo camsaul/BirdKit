@@ -1,5 +1,5 @@
 //
-//  BKLogging.m
+//  DBKLogging.m
 //  BirdKit
 //
 //  Created by Cameron Saul on 6/13/13.
@@ -9,7 +9,7 @@
 #import "BKLogging.h"
 
 static int CurrentLogLevel = LogLevelInfo;
-int *BKLogLevel = &CurrentLogLevel;
+int *DBKLogLevel = &CurrentLogLevel;
 
 static const char *string_for_log_category(LogCategory category) {
 	switch (category) {

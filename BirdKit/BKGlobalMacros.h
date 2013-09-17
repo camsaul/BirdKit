@@ -21,5 +21,5 @@
 #define TODO_ALERT(MESSAGE...) { \
 	NSString *___message = [NSString stringWithFormat:MESSAGE]; \
 	[[[UIAlertView alloc] initWithTitle:@"TODO" message:___message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show]; \
-	BKLog(LogFlagWarn, LogCategoryTODO, ___message); \
+	DBKLog(LogFlagWarn, LogCategoryTODO, ___message); \
 }
