@@ -103,7 +103,7 @@ inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CL
 	const float lon1_rad = lon1 * RAD_PER_DEG;
 	const float lat2_rad = lat2 * RAD_PER_DEG;
 	const float lon2_rad = lon2 * RAD_PER_DEG;
-	
+
 	const float a = pow((sinf(dlat_rad/2.0f)), 2.0f) + cosf(lat1_rad) * cosf(lat2_rad) * pow(sinf(dlon_rad/2.0f),2.0f);
 	const float c = 2.0f * atan2f( sqrt(a), sqrt(1.0f-a));
 	float d = RADIUS * c;

@@ -14,23 +14,23 @@ int *BKLogLevel = &CurrentLogLevel;
 #pragma GCC diagnostic ignored "-Wunused"
 static const char *string_for_log_category(LogCategory category) {
 	switch (category) {
-		case LogCategoryEtc:						return "Etc";
+		case LogCategoryEtc:					return "Etc";
 		case LogCategoryLocation:				return "Location";
 		case LogCategoryRootVCAndView:			return "RootVC/RootView";
-		case LogCategoryRouteFinder:				return "Route Finder";
+		case LogCategoryRouteFinder:			return "Route Finder";
 		case LogCategoryAppHandler:				return "App Handler";
 		case LogCategoryNavigationService:		return "Nav Service";
 		case LogCategoryTODO:					return "TODO";
 		case LogCategoryCoreData:				return "CoreData";
-		case LogCategoryAPI:						return "API";
-		case LogCategoryAppMode:					return "AppMode";
+		case LogCategoryAPI:					return "API";
+		case LogCategoryAppMode:				return "AppMode";
 		case LogCategoryWalkingDirections:		return "WalkingDirs";
-		case LogCategoryPredictions:				return "Predictions";
+		case LogCategoryPredictions:			return "Predictions";
 		case LogCategorySearchResultsManager:	return "SearchResultsManager";
 		case LogCategoryGeocoder:				return "Geocoder";
 		case LogCategoryDataSerializer:			return "DataSerialzer";
 		case LogCategoryDataImporter:			return "DataImporter";
-		case LogCategoryMap:						return "Map";
+		case LogCategoryMap:					return "Map";
 	}
 	assert(false); // Please add a string for log category
 }
