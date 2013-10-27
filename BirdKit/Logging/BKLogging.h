@@ -35,17 +35,26 @@ typedef enum : NSUInteger {
 	LogCategoryMap					= 1 << 20,
 } LogCategory;
 
-void BKLog(LogFlag flag, LogCategory category, __strong NSString const * const formatString, ...);
+/// Logs a log message with flag and category. Log message will only be displayed if *BKLogLevel & (flag|category) is true.
+/// DEPRECATED -- In the future, we're going to move towards the BLog2 style logging.
+void BKLog(LogFlag flag, LogCategory category, const NSString *formatString, ...);
+
+/// Logs a log message with flag and the class name of sender (you should always pass self for the first parameter). Log message will only be displayed if *BKLogLevel & flag is true.
+void BKLog2(id sender, LogFlag flag, const NSString *formatString, ...);
+
+/// Logs a todo message.
 void BKLogTODO(NSString *formatString, ...);
 
 #if DEBUG
 	#define DBKLog(LOG_FLAG, LOG_CATEGORY, ...) BKLog(LOG_FLAG, LOG_CATEGORY, __VA_ARGS__)
+	#define DBKLog2(LOG_FLAG, ...) BKLog2(self, LOG_FLAG, __VA_ARGS__)
 #else
 	#define DBKLog(...)
+	#define DBKLog2(...)
 #endif
 
 
-// ---------- DEFAULT LOGGING LEVEL ----------
+// ---------- DEFAULT LOGGING LEVEL ---------- //
 
 typedef enum : NSUInteger {
 	LogLevelError	= 1,	// 0001
