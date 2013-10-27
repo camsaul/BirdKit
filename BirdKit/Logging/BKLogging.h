@@ -18,15 +18,15 @@ typedef enum : NSUInteger {
 typedef enum : NSUInteger {
 	LogCategoryEtc					= 1 << 4, //  16 = 0001 0000
 	LogCategoryLocation				= 1 << 5, //  32 = 0010 0000
-	LogCategoryRootVCAndView			= 1 << 6, //  64 = 0100 0000
+	LogCategoryRootVCAndView		= 1 << 6, //  64 = 0100 0000
 	LogCategoryRouteFinder			= 1 << 7, // 128 = 1000 0000
 	LogCategoryAppHandler			= 1 << 8, // 256
-	LogCategoryNavigationService		= 1 << 9, // 512
+	LogCategoryNavigationService	= 1 << 9, // 512
 	LogCategoryTODO					= 1 << 10,
 	LogCategoryCoreData				= 1 << 11,
 	LogCategoryAPI					= 1 << 12,
 	LogCategoryAppMode				= 1 << 13,
-	LogCategoryWalkingDirections		= 1 << 14,
+	LogCategoryWalkingDirections	= 1 << 14,
 	LogCategoryPredictions			= 1 << 15,
 	LogCategorySearchResultsManager	= 1 << 16,
 	LogCategoryGeocoder				= 1 << 17,
