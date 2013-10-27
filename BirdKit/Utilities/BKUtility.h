@@ -21,7 +21,10 @@ BOOL is_ios7();
 CGSize current_screen_size();
 
 /// Shorthand for calling dispatch_after() to dispatch on the main thread after some delay.
-void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block);
+void dispatch_after_seconds(const float delayInSeconds, dispatch_block_t block);
+
+/// Dispatch block asyncronously on the background priority queue after delay.
+void dispatch_after_seconds_background(const float delayInSeconds, dispatch_block_t block);
 
 /// Shorthand for calling dispatch_after() to dispatch on the main thread after a millisecond.
 /// Theoretically, this should be just enough time to make the block get executed on the next run loop, which will give you enough

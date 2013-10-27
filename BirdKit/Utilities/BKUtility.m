@@ -76,13 +76,18 @@ inline CGSize current_screen_size() {
 	return [UIApplication sharedApplication].delegate.window.rootViewController.view.bounds.size;
 }
 
-inline void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block) {
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+inline void dispatch_after_seconds(const float delayInSeconds, dispatch_block_t block) {
+	const dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
 
+void dispatch_after_seconds_background(const float delayInSeconds, dispatch_block_t block) {
+	const dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
+}
+
 inline void dispatch_next_run_loop(dispatch_block_t block) {
-	dispatch_after_seconds(0.001, block);
+	dispatch_after_seconds(0.001f, block);
 }
 
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
