@@ -10,15 +10,24 @@
 #import "BKGlobalMacros.h"
 
 // Categories
-#import "NSObject+BirdKit.h"
 #import "NSArray+BirdKit.h"
-#import "NSLayoutConstraint+BirdKit.h"
+#import "NSSet+BirdKit.h"
 #import "NSDictionary+BirdKit.h"
+#import "NSLayoutConstraint+BirdKit.h"
+#import "NSObject+BirdKit.h"
+#import "NSString+BirdKit.h"
 #import "NSValue+BirdKit.h"
-#import "UIView+BirdKit.h"
+#import "NSValue+BirdKit.h"
+#import "UIAlertView+BirdKit.h"
 #import "UIButton+BirdKit.h"
 #import "UIColor+BirdKit.h"
-#import "NSValue+BirdKit.h"
+#import "UIImage+BirdKit.h"
+#import "UILabel+BirdKit.h"
+#import "UITextView+BirdKit.h"
+#import "UIView+BirdKit.h"
+
+// Model Classes
+#import "BKInfiniteSequence.h"
 
 // Navigation Service
 #import "NavigationService.h"
@@ -31,3 +40,6 @@
 #import "BKUtility.h"
 #import "BKGeocoder.h"
 #import "BKEdgeSwipeGestureRecognizer.h"
+
+// Controls
+#import "BKPivotViewController.h"

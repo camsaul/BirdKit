@@ -9,22 +9,19 @@
 @import Foundation;
 @import UIKit;
 
+/// this parameter is a special case; if you set this parameter and the target view controller responds to setDelegate:,
+/// then setDelegate: will be called with the value when that view controller is pushed.
+static const NSString *NavigationServiceDelegateParam = @"Delegate";
+
 @interface NavigationService : NSObject
 + (void)navigateTo:(NSString *)destinationClass params:(NSDictionary *)params;
++ (void)popViewControllerAnimated:(BOOL)animated;
 + (void)setNavigationController:(UINavigationController *)navigationController;
 @end
 
 @protocol InitWithParams <NSObject>
 - (id)initWithParams:(NSDictionary *)params;
 @optional
-+ (void)validateParams:(NSDictionary *)params; // implement this static method and assert params are valid if desired
-@end
-
-@interface NSDictionary (NavigationService)
-- (NSDictionary *)dictionaryByAddingValue:(NSObject *)value forKey:(NSString *)key;
-- (BOOL)containsNumber:(NSString *)key;
-- (NSInteger)valueForInteger:(NSString *)key;
-- (float)valueForFloat:(NSString *)key;
-- (double)valueForDouble:(NSString *)key;
-- (BOOL)valueForBool:(NSString *)key;
+/// implement this static method and assert params are valid if desired
++ (void)validateParams:(NSDictionary *)params;
 @end

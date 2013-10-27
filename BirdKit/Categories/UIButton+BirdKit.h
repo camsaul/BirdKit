@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UIButton+BirdKit.h
 //  BirdKit
 //

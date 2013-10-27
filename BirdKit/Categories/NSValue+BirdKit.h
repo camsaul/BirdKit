@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  NSValue+BirdKit.h
 //  BirdKit
 //

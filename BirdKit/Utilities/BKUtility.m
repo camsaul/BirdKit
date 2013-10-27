@@ -3,14 +3,13 @@
 //  BirdKit
 //
 //  Created by Cameron Saul on 4/9/13.
-//  Copyright (c) 2013 FiveBy. All rights reserved.
+//  Copyright (c) 2013 Cam Saul. All rights reserved.
 //
 
 #import "BKUtility.h"
 
-static int isIpad = -1;
-
 BOOL is_ipad() {
+	static int isIpad = -1;
 	if (isIpad == -1) {
 		isIpad = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? 1 : 0;
 	}
@@ -38,7 +37,7 @@ BOOL is_landscape() {
 	//	}
 	//
 	//	// inspect the toInterfaceOrientation of the modal view controller if it exists and it implements the ToInterfaceOrientation property
-	//	UIViewController *presentedViewController = APP_DELEGATE.rootViewController.presentedViewController;
+	//	UIViewController *presentedViewController = App_Delegate().rootViewController.presentedViewController;
 	//	if (presentedViewController && [presentedViewController conformsToProtocol:@protocol(ToInterfaceOrientation)]) {
 	//		UIViewController<ToInterfaceOrientation> *presentedVC = (UIViewController<ToInterfaceOrientation> *)presentedViewController;
 	//		if ([presentedVC toInterfaceOrientation] != NSNotFound) {
@@ -46,7 +45,7 @@ BOOL is_landscape() {
 	//		}
 	//	}
 	//
-	//	return UIDeviceOrientationIsLandscape([(UIViewController<ToInterfaceOrientation> *)(APP_DELEGATE.rootViewController) toInterfaceOrientation]);
+	//	return UIDeviceOrientationIsLandscape([(UIViewController<ToInterfaceOrientation> *)(App_Delegate().rootViewController) toInterfaceOrientation]);
 }
 
 BOOL is_portrait() {
@@ -66,56 +65,47 @@ BOOL is_retina() {
 }
 
 BOOL is_ios7() {
-	NSString *versionStr = [[UIDevice currentDevice] systemVersion];
-	return [versionStr floatValue] >= 7.0;
+	static BOOL _is_ios7 = -1;
+	if (_is_ios7 == -1) {
+		_is_ios7 = [[UIDevice currentDevice] systemVersion].floatValue >= 7.0f;
+	}
+	return _is_ios7;
 }
 
-CGSize current_screen_size() {
+inline CGSize current_screen_size() {
 	return [UIApplication sharedApplication].delegate.window.rootViewController.view.bounds.size;
 }
 
-void dispatch_next_run_loop(dispatch_block_t block) {
-	double delayInSeconds = 0.001;
+inline void dispatch_after_seconds(const double delayInSeconds, dispatch_block_t block) {
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
 
-BOOL coordinate_is_valid(CLLocationCoordinate2D coordinate) {
-	return latitude_is_valid(coordinate.latitude) && longitude_is_valid(coordinate.longitude);
-}
-
-BOOL latitude_is_valid(double lat) {
-	return (lat <= 90.0 && lat >= -90.0);
-}
-
-BOOL longitude_is_valid(double lon) {
-	return (lon <= 180.0 && lon >= -180.0);
+inline void dispatch_next_run_loop(dispatch_block_t block) {
+	dispatch_after_seconds(0.001, block);
 }
 
 inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
-	assert(coordinate_is_valid(coordinate1));
-	assert(coordinate_is_valid(coordinate2));
+	static const int RADIUS = 6371000; // Earth's radius in meters
+	static const float RAD_PER_DEG = 0.017453293f;
 	
-	const int RADIUS = 6371000; // Earth's radius in meters
-	const float RAD_PER_DEG = 0.017453293;
+	const float lat1 = coordinate1.latitude;
+	const float lat2 = coordinate2.latitude;
+	const float lon1 = coordinate1.longitude;
+	const float lon2 = coordinate2.longitude;
 	
-	float lat1 = coordinate1.latitude;
-	float lat2 = coordinate2.latitude;
-	float lon1 = coordinate1.longitude;
-	float lon2 = coordinate2.longitude;
+	const float dlat = lat2 - lat1;
+	const float dlon = lon2 - lon1;
 	
-	float dlat = lat2 - lat1;
-	float dlon = lon2 - lon1;
+	const float dlon_rad = dlon * RAD_PER_DEG;
+	const float dlat_rad = dlat * RAD_PER_DEG;
+	const float lat1_rad = lat1 * RAD_PER_DEG;
+	const float lon1_rad = lon1 * RAD_PER_DEG;
+	const float lat2_rad = lat2 * RAD_PER_DEG;
+	const float lon2_rad = lon2 * RAD_PER_DEG;
 	
-	float dlon_rad = dlon * RAD_PER_DEG;
-	float dlat_rad = dlat * RAD_PER_DEG;
-	float lat1_rad = lat1 * RAD_PER_DEG;
-	float lon1_rad = lon1 * RAD_PER_DEG;
-	float lat2_rad = lat2 * RAD_PER_DEG;
-	float lon2_rad = lon2 * RAD_PER_DEG;
-	
-	float a = pow((sinf(dlat_rad/2)), 2) + cosf(lat1_rad) * cosf(lat2_rad) * pow(sinf(dlon_rad/2),2);
-	float c = 2 * atan2f( sqrt(a), sqrt(1-a));
+	const float a = pow((sinf(dlat_rad/2.0f)), 2.0f) + cosf(lat1_rad) * cosf(lat2_rad) * pow(sinf(dlon_rad/2.0f),2.0f);
+	const float c = 2.0f * atan2f( sqrt(a), sqrt(1.0f-a));
 	float d = RADIUS * c;
 	
 	if (isnan(d)) {
@@ -125,9 +115,14 @@ inline float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CL
     return d; // Return our calculated distance
 }
 
-float latitude_span_to_meters(float latitudeSpan) {
+inline float latitude_span_to_meters(float latitudeSpan) {
 	const float metersPerLatitudeDegree = 111000; // 1 degree lat is always 111km
 	return metersPerLatitudeDegree * latitudeSpan;
+}
+
+inline float meters_to_latitude_span(float meters) {
+	const float metersPerLatitudeDegree = 111000; // 1 degree lat is always 111km
+	return meters / metersPerLatitudeDegree;
 }
 
 float meters_to_miles(float meters) {
@@ -139,15 +134,23 @@ inline int meters_to_minutes_walk(int meters) {
 	return meters / AverageHumanWalkingSpeedMetersPerMinute;
 }
 
-extern void BKLogTODO(NSString *,...);
+MKCoordinateRegion MKCoordinateRegionForCoordinates(CLLocationCoordinate2D c1, CLLocationCoordinate2D c2) {
+	const CLLocationCoordinate2D center = CLLocationCoordinate2DMake((c1.latitude + c2.latitude) / 2.0, (c1.longitude + c2.longitude) / 2.0);
+	const float dist = distance_between_coordinates(c1, c2) * 1.25f; // zoom out a little bit so they both fit on screen
+	return MKCoordinateRegionMakeWithDistance(center, dist, dist);
+}
+
+BOOL CLLocationCoordinatesEqual(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2) {
+	return coordinate1.latitude == coordinate2.latitude && coordinate1.longitude == coordinate2.longitude;
+}
+
+extern void DBKLogTODO(NSString *,...);
 
 void TodoAlert(NSString *formatString, ...) {
 	va_list argptr;
 	va_start(argptr, formatString);
 	NSString *message = [[NSString alloc] initWithFormat:formatString arguments:argptr];
 	[[[UIAlertView alloc] initWithTitle:@"TODO" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-	
-	BKLogTODO(formatString, argptr);
 	
 	va_end(argptr);
 }

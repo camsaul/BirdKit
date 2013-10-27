@@ -1,4 +1,4 @@
-//
+//  -*-ObjC-*-
 //  UIColor+BirdKit.h
 //  BirdKit
 //
