@@ -26,6 +26,22 @@ void dispatch_after_seconds(const float delayInSeconds, dispatch_block_t block);
 /// Dispatch block asyncronously on the background priority queue after delay.
 void dispatch_after_seconds_background(const float delayInSeconds, dispatch_block_t block);
 
+
+/// dispatch the block asyncronously on the main thread.
+void dispatch_async_main(dispatch_block_t block);
+
+/// dispatch the block asyncronously on the high priority queue.
+void dispatch_async_high(dispatch_block_t block);
+
+/// dispatch the block asyncronously on the default priority queue.
+void dispatch_async_default(dispatch_block_t block);
+
+/// dispatch the block asyncronously on the low priority queue.
+void dispatch_async_low(dispatch_block_t block);
+
+/// dispatch the block asyncronously on the background priority queue.
+void dispatch_async_background(dispatch_block_t block);
+
 /// Shorthand for calling dispatch_after() to dispatch on the main thread after a millisecond.
 /// Theoretically, this should be just enough time to make the block get executed on the next run loop, which will give you enough
 /// Time to do UI updates, etc. before it is called.

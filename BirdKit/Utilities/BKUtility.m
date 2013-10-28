@@ -86,6 +86,29 @@ void dispatch_after_seconds_background(const float delayInSeconds, dispatch_bloc
 	dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
 }
 
+inline void dispatch_async_main(dispatch_block_t block) {
+	dispatch_async(dispatch_get_main_queue(), block);
+}
+
+
+inline void dispatch_async_high(dispatch_block_t block) {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), block);
+}
+
+
+inline void dispatch_async_default(dispatch_block_t block) {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+}
+
+inline void dispatch_async_low(dispatch_block_t block) {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), block);
+}
+
+
+inline void dispatch_async_background(dispatch_block_t block) {
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
+}
+
 inline void dispatch_next_run_loop(dispatch_block_t block) {
 	dispatch_after_seconds(0.001f, block);
 }

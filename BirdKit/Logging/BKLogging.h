@@ -49,8 +49,8 @@ void BKLogTODO(NSString *formatString, ...);
 	#define DBKLog(LOG_FLAG, LOG_CATEGORY, ...) BKLog(LOG_FLAG, LOG_CATEGORY, __VA_ARGS__)
 	#define DBKLog2(LOG_FLAG, ...) BKLog2(self, LOG_FLAG, __VA_ARGS__)
 #else
-	#define DBKLog(...)
-	#define DBKLog2(...)
+	#define DBKLog(LOG_FLAG, LOG_CATEGORY, ...)
+	#define DBKLog2(LOG_FLAG, ...)
 #endif
 
 
