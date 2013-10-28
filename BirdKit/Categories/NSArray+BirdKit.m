@@ -40,31 +40,31 @@
 
 /// Splits an array into arrays of numPartitions items. The last array may be smaller than the rest.
 /// e.g. [@[1 2 3 4 5] partition:2] -> @[@[1 2] @[3 4] @[5]]
-- (NSArray *)partition:(NSUInteger)partitionSize {
-	unsigned count = self.count;
-	if (partitionSize > count) return self;
-	
-	unsigned numPartitions = (unsigned)ceilf((float)count / (float)partitionSize);
-	
-	NSMutableArray *partitions = [NSMutableArray arrayWithCapacity:numPartitions];
-	for (unsigned i = 0; i < count; i++) {
-		unsigned partitionNum = i / partitionSize;
-		unsigned idxInPartition = i % partitionSize; // index relative to this partition
-		
-		NSMutableArray *partition = nil;
-		if (idxInPartition == 0) {
-			// first time seeing this partition, so create it
-			partition = [NSMutableArray arrayWithCapacity:partitionSize];
-			partitions[partitionNum] = partition;
-		} else {
-			partition = partitions[partitionNum];
-		}
-		
-		partition[idxInPartition] = self[i];
-	}
-	
-	return partitions;
-}
+//- (NSArray *)partition:(NSUInteger)partitionSize {
+//	unsigned count = self.count;
+//	if (partitionSize > count) return self;
+//	
+//	unsigned numPartitions = (unsigned)ceilf((float)count / (float)partitionSize);
+//	
+//	NSMutableArray *partitions = [NSMutableArray arrayWithCapacity:numPartitions];
+//	for (unsigned i = 0; i < count; i++) {
+//		unsigned partitionNum = i / partitionSize;
+//		unsigned idxInPartition = i % partitionSize; // index relative to this partition
+//		
+//		NSMutableArray *partition = nil;
+//		if (idxInPartition == 0) {
+//			// first time seeing this partition, so create it
+//			partition = [NSMutableArray arrayWithCapacity:partitionSize];
+//			partitions[partitionNum] = partition;
+//		} else {
+//			partition = partitions[partitionNum];
+//		}
+//		
+//		partition[idxInPartition] = self[i];
+//	}
+//	
+//	return partitions;
+//}
 
 - (NSArray *)map:(ArrayMapBlock)block {
 	unsigned count = self.count;

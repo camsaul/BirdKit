@@ -28,7 +28,7 @@ typedef id(^ArrayMapBlock)(id obj);
 /// Splits an array into arrays of partitionSize items. The last array may be smaller than the rest.
 /// e.g. [@[1 2 3 4 5] partition:2] -> @[@[1 2] @[3 4] @[5]]
 /// if partitionSize > self.count, will just return self.
-- (NSArray *)partition:(NSUInteger)partitionSize;
+//- (NSArray *)partition:(NSUInteger)partitionSize;
 
 /// Classic lisp mapping function, using blocks. Returns a new array of the results of applying block to every element in self.
 /// If the block returns nil, no object will be added; thus, you can use this method to filter arrays.
