@@ -52,11 +52,12 @@
 }
 
 - (NSInteger)distanceFromString:(NSString *)otherString {
-	static int gain = 0;
-	static int cost = 1;
+	static const int Gain = 0;
+	static const int Cost = 1;
 	
 	if (!otherString.length) return self.length;
-	
+	NSParameterAssert([otherString isKindOfClass:[NSString class]]);
+		
 	// normalize strings
 	NSString *stringA = [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString];
 	NSString *stringB = [[otherString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString];
@@ -83,9 +84,9 @@
 				
 				// Step 5
 				if([stringA characterAtIndex: i-1] == [stringB characterAtIndex: j-1]) {
-					change = -gain;
+					change = -Gain;
 				} else {
-					change = cost;
+					change = Cost;
 				}
 				
 				// Step 6

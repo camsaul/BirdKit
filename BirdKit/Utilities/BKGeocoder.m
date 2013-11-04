@@ -56,6 +56,7 @@ PROP CLLocationCoordinate2D coordinate;
 		}
 		CLPlacemark *placemark = placemarks[0];
 		NSString *address = placemark.addressDictionary[@"Street"]; // <- what's the real constant key
+		NSParameterAssert(!address || [address isKindOfClass:[NSString class]]);
 		DBKLog(LogFlagInfo, LogCategoryGeocoder, @"Reverse geocoding result: %@", address);
 		completionBlock(address);
 	}];
