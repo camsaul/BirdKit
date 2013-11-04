@@ -20,13 +20,13 @@
 	NSString *gString = [string substringWithRange:NSMakeRange(2, 2)];
 	NSString *bString = [string substringWithRange:NSMakeRange(4, 2)];
 	
-	NSInteger rValue;
+	unsigned rValue;
 	sscanf([rString UTF8String], "%x", &rValue);
 	
-	NSInteger gValue;
+	unsigned gValue;
 	sscanf([gString UTF8String], "%x", &gValue);
 	
-	NSInteger bValue;
+	unsigned bValue;
 	sscanf([bString UTF8String], "%x", &bValue);
 	
 	return [UIColor colorWithRed:((CGFloat)rValue / 255.0) green:((CGFloat)gValue / 255.0) blue:((CGFloat)bValue / 255.0) alpha:1.0];

@@ -20,7 +20,7 @@
 }
 
 - (NSArray *)interleave:(NSArray *)another {
-	unsigned	remainingInSelf = self.count,
+	NSUInteger	remainingInSelf = self.count,
 				remainingInAnother = another.count,
 				idx = 0,
 				resultSize = MIN(remainingInSelf, remainingInAnother) * 2;
@@ -67,7 +67,7 @@
 //}
 
 - (NSArray *)map:(ArrayMapBlock)block {
-	unsigned count = self.count;
+	NSUInteger count = self.count;
 	if (!count) return @[];
 	NSMutableArray *m = [NSMutableArray arrayWithCapacity:count];
 	for (int i = 0; i < count; i++) {
@@ -79,7 +79,7 @@
 }
 
 - (NSArray *)mapm:(SEL)sel {
-	unsigned count = self.count;
+	NSUInteger count = self.count;
 	if (!count) return @[];
 	NSMutableArray *m = [NSMutableArray arrayWithCapacity:count];
 	for (int i = 0; i < count; i++) {

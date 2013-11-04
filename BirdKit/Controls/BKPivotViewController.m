@@ -80,7 +80,7 @@
 	return self.view.width - self.peekAmount;
 }
 
-- (int)tagForViewAtIndex:(NSUInteger)index {
+- (NSUInteger)tagForViewAtIndex:(NSUInteger)index {
 	return index + 1234; // arbitrary offset to (hopefully) avoid conflicts with other (possible) subviews that might have an index of 0 or something
 }
 
@@ -119,8 +119,8 @@
 	self.pageViews[index] = !newPage ? self.EmptyIndexPlaceholder : newPage;
 	
 	if (pageSpan > 1) {
-		for (int offset = 1; offset < pageSpan; offset++) {
-			int i = index + offset;
+		for (NSUInteger offset = 1; offset < pageSpan; offset++) {
+			NSUInteger i = index + offset;
 			self.pageViews[i] = self.EmptyIndexPlaceholder;
 		}
 	}
@@ -144,7 +144,7 @@
 	[self addViewForIndex:index animated:animated];
 	
 	// go ahead and add the next page as well (on next run loop) so it can "peek" at the user
-	int numPages = self.pageViews.count;
+	NSUInteger numPages = self.pageViews.count;
 	if (index < numPages-1 && loadNextPage && self.pageViews[numPages-1] == self.UnknownIndexPlaceholder) {
 		dispatch_next_run_loop(^{
 			[self reloadPageAtIndex:index+1 animated:YES loadNextPage:NO];
@@ -181,7 +181,7 @@
 }
 
 - (void)scrollToPageAtIndex:(NSUInteger)index animated:(BOOL)animated {
-	NSAssert(index < self.pageViews.count, @"BKPivotViewController setCurrentPage: failed; the value %d id out of bounds.", index);
+	NSAssert(index < self.pageViews.count, @"BKPivotViewController setCurrentPage: failed; the value %d id out of bounds.", (int)index);
 	
 	if (_currentPage == index) return;
 	

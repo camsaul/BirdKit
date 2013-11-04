@@ -75,7 +75,7 @@ PROP BOOL currentlyTrackingSwipe;
 	CGPoint touchLocation = [touch locationInView:self.view];
 	self.swipeDirection = [self validDirectionForStartPoint:touchLocation];
 	
-	if ((int)self.swipeDirection == NSNotFound) {
+	if ((NSInteger)self.swipeDirection == NSNotFound) {
 		self.state = UIGestureRecognizerStateFailed;
 		return;
 	}

@@ -66,7 +66,7 @@ BOOL is_retina() {
 
 BOOL is_ios7() {
 	static BOOL _is_ios7 = -1;
-	if (_is_ios7 == -1) {
+	if ((int)_is_ios7 == -1) {
 		_is_ios7 = [[UIDevice currentDevice] systemVersion].floatValue >= 7.0f;
 	}
 	return _is_ios7;
