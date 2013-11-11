@@ -57,6 +57,7 @@
 	
 	if (!otherString.length) return self.length;
 	NSParameterAssert([otherString isKindOfClass:[NSString class]]);
+	if (![otherString isKindOfClass:[NSString class]]) return NO;
 		
 	// normalize strings
 	NSString *stringA = [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseString];
