@@ -51,6 +51,10 @@ void dispatch_next_run_loop(dispatch_block_t block);
 /// Assumes coordinates are both valid. (this is in meters)
 float distance_between_coordinates(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
 
+/// FASTER method to calculate distance between coordinates. Uses Haversine formula, but if that fails, tries Spherical Law of Cosines.
+/// Assumes coordinates are both valid. (this is in meters)
+int distance_between_coordinates_int(CLLocationCoordinate2D coordinate1, CLLocationCoordinate2D coordinate2);
+
 float latitude_span_to_meters(float latitudeSpan);
 
 inline float meters_to_latitude_span(float meters);

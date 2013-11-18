@@ -14,6 +14,8 @@
 #define PROP_COPY_RO @property (nonatomic, copy, readonly)
 #define PROP_WEAK @property (nonatomic, weak, readwrite)
 #define PROP_WEAK_RO @property (nonatomic, weak, readonly)
+#define PROP_ASSIGN @property(nonatomic, assign, readwrite)
+#define PROP_ASSIGN_RO @property(nonatomic, assign, readonly)
 #define PROP_DELEGATE(PROTOCOL) PROP_WEAK id<PROTOCOL> delegate
 
 #define NEW(CLASS, VAR_NAME) CLASS *VAR_NAME = [[CLASS alloc] init]
