@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import UIKit;
-
 @interface NSLayoutConstraint (BirdKit)
 
 + (NSArray *)constraintsWithVisualFormat:(NSString *)format options:(NSLayoutFormatOptions)opts metrics:(NSDictionary *)metrics views:(NSDictionary *)views priority:(UILayoutPriority)priority;

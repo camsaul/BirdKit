@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import Foundation;
-
 typedef enum : NSUInteger {
 	LogFlagError	= 1 << 0, // 1 = 0001
 	LogFlagWarn		= 1 << 1, // 2 = 0010

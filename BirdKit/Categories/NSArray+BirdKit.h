@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import Foundation;
-
 typedef id(^ArrayMapBlock)(id obj);
 
 @interface NSArray (BirdKit)

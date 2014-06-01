@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import UIKit;
-
 /// Save ourselves a bit of typing by defining some really common resizing masks here
 static const UIViewAutoresizing UIViewAutoresizingFlexibleVerticalMargins	= UIViewAutoresizingFlexibleTopMargin		| UIViewAutoresizingFlexibleBottomMargin;
 static const UIViewAutoresizing UIViewAutoresizingFlexibleHorizontalMargins = UIViewAutoresizingFlexibleLeftMargin		| UIViewAutoresizingFlexibleRightMargin;

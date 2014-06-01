@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import Foundation;
-@import UIKit;
-
 /// this parameter is a special case; if you set this parameter and the target view controller responds to setDelegate:,
 /// then setDelegate: will be called with the value when that view controller is pushed.
 static const NSString *NavigationServiceDelegateParam = @"Delegate";

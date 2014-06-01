@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import Foundation;
-@import MapKit;
-
 @interface NSValue (BirdKit)
 
 + (NSValue *)valueWithMKCoordinateRegion:(MKCoordinateRegion)region;

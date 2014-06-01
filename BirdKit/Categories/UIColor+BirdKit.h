@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import UIKit;
-
 @interface UIColor (BirdKit)
 
 + (UIColor *)colorWithHexString:(NSString *)string; // must be 6 digits (or 7 with a '#' at the beginning)

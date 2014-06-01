@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Lucky Bird, Inc. All rights reserved.
 //
 
-@import UIKit;
-
 @interface UIButton (BirdKit)
 
 - (void)addTarget:(id)target action:(SEL)action; // shorthand so you don't need to type out the action since 99.99% of the time we want TouchUpInside
